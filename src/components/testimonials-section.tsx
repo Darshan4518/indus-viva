@@ -100,9 +100,9 @@ export default function TestimonialsSection() {
             }}
             pagination={{ clickable: true }}
             onBeforeInit={(swiper) => {
-              // @ts-ignore
+              // @ts-expect-error
               swiper.params.navigation.prevEl = prevRef.current
-              // @ts-ignore
+              // @ts-expect-error
               swiper.params.navigation.nextEl = nextRef.current
             }}
             className="!pb-14  "

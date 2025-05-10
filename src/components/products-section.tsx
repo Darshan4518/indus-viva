@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-// @ts-ignore
+// @ts-expect-error
 import "swiper/css";
-// @ts-ignore
+// @ts-expect-error
 import "swiper/css/navigation";
-// @ts-ignore
+// @ts-expect-error
 import "swiper/css/pagination";
 
 import lp01 from "@/assets/img/new/lp-01.png";
@@ -160,9 +160,9 @@ export default function ProductsSection() {
             }}
             pagination={{ clickable: true }}
             onBeforeInit={(swiper) => {
-              // @ts-ignore
+              // @ts-expect-error
               swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
+              // @ts-expect-error
               swiper.params.navigation.nextEl = nextRef.current;
             }}
             className="!pb-14"

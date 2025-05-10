@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-//@ts-ignore
+//@ts-expect-error
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 

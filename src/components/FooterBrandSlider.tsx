@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-//@ts-ignore
+//@ts-expect-error
 import 'swiper/css';
-//@ts-ignore
+//@ts-expect-error
 import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper/modules';
 
