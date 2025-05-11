@@ -10,10 +10,12 @@ import PhilosophySection from "@/components/home/philosophy-section";
 import TestimonialsSection from "@/components/home/testimonials-section";
 import BlogSection from "@/components/home/blog-section";
 import ContactSection from "@/components/home/contact-section";
+import FooterTextSlider from "@/components/FooterTextSlider";
 
 const Home = () => {
+
   return (
-    <section>
+    <section className=" overflow-hidden">
       <HeroSection />
       <AboutSection />
       <SustainabilitySection />
@@ -26,6 +28,7 @@ const Home = () => {
       <TestimonialsSection />
       <BlogSection />
       <ContactSection />
+      <FooterTextSlider />
     </section>
   );
 };
