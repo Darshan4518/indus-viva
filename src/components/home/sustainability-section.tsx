@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Badge } from "./ui/badge";
+import { Badge } from "../ui/badge";
 import project02 from "@/assets/img/new/project-02.png";
 import project01 from "@/assets/img/new/project-01.png";
 import projectBg from "@/assets/img/bg/project-bg-pattern.png"

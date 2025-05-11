@@ -11,32 +11,44 @@ const FooterTextSlider = () => {
     "Let’s Build Wellness Together *",
     "Let’s Build Wellness Together *",
     "Let’s Build Wellness Together *",
-    "Let’s Build Wellness Together *",
-    "Let’s Build Wellness Together *",
-    "Let’s Build Wellness Together *",
   ];
 
   return (
     <Swiper
       modules={[Autoplay]}
-      spaceBetween={30}
       loop={true}
       autoplay={{ delay: 0, disableOnInteraction: false }}
-      speed={3000}
+      speed={5000}
+      
       grabCursor={true}
+
       allowTouchMove={false}
-      slidesPerView={3}
+  
+   slidesPerView={3}
+
       breakpoints={{
-        480: { slidesPerView: 2 },
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        1024: { slidesPerView: 5 },
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
       }}
-      className="w-full"
+      centeredSlides={false}
+      
+      spaceBetween={30}
+     
+      className="w-full bg-[radial-gradient(circle,_#088772_0%,_#5ec199_96%)]  h-[10vh]"
     >
       {texts.map((text, idx) => (
-        <SwiperSlide key={idx} className="flex justify-center items-center">
-          <h2 className="text-sm sm:text-lg md:text-3xl lg:text-4xl font-semibold text-white whitespace-nowrap">
+        <SwiperSlide
+          key={idx}
+          className="min-w-fit px-6 flex justify-center items-center"
+        >
+          <h2 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-semibold text-white whitespace-nowrap py-5">
             {text}
           </h2>
         </SwiperSlide>

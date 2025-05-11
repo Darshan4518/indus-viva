@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router";
 import logo from "@/assets/img/new/logo.svg"
+import play from "@/assets/img/icon/play.png"
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +58,7 @@ export default function Navbar() {
               ].map((item) => (
                 <Link
                   key={item}
-                  to={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
                   className="text-white hover:text-teal-100 transition-colors"
                 >
                   {item}
