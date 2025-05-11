@@ -20,7 +20,7 @@ export default function ResearchSection() {
         width: "100%",
         height: "100%",
       }}
-      className="min-h-[200vh]" 
+      className="min-h-[200vh]"
     >
       <section ref={ref} className="bg-white">
         <div className="container mx-auto  bg-[#0e7f7614]  ">

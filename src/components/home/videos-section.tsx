@@ -1,5 +1,5 @@
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const videoUrls = [
   "https://www.youtube.com/embed/gwDXyKoFCXs?mute=1&amp;autoplay=1",
@@ -7,14 +7,13 @@ const videoUrls = [
   "https://www.youtube.com/embed/d8rxRDhytEE?mute=1&autoplay=1",
   "https://www.youtube.com/embed/LgxXWLk4s08?mute=1&autoplay=1",
   "https://www.youtube.com/embed/C0JPMlDhF5g?mute=1&autoplay=1",
-
-]
+];
 
 export default function VideosSection() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-white text-black">
@@ -47,14 +46,20 @@ export default function VideosSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
-              
             >
-             <iframe width="100%" height="315" src={url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen={true}></iframe>
+              <iframe
+                width="100%"
+                height="315"
+                src={url}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen={true}
+              ></iframe>
             </motion.div>
-           
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

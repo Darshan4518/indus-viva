@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 
-export default function NavigationHeroSection({path,title}:{path:string,title:string}) {
+export default function NavigationHeroSection({
+  path,
+  title,
+}: {
+  path: string;
+  title: string;
+}) {
   return (
     <div className="relative z-10 bg-[#0a0e1a] py-30 text-white text-center overflow-hidden bg-[url('https://magicads.ae/indus-viva/assets/img/breadcrumb/breadcrumb-pattern.png')] bg-no-repeat bg-cover">
       <motion.h1
@@ -9,7 +15,7 @@ export default function NavigationHeroSection({path,title}:{path:string,title:st
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-       {title}
+        {title}
       </motion.h1>
 
       <motion.p
@@ -26,8 +32,13 @@ export default function NavigationHeroSection({path,title}:{path:string,title:st
           className="absolute w-40 h-40"
           animate={{ y: [0, 20, 0], x: [0, 10, 0] }}
           transition={{ duration: 6, repeat: Infinity }}
-          style={{ left: "20%", top: "10%" }}>
-            <img src="https://magicads.ae/indus-viva/assets/img/breadcrumb/shape-1.png" alt="shape1" className="w-full h-full"  />
+          style={{ left: "20%", top: "10%" }}
+        >
+          <img
+            src="https://magicads.ae/indus-viva/assets/img/breadcrumb/shape-1.png"
+            alt="shape1"
+            className="w-full h-full"
+          />
         </motion.div>
         <motion.div
           className="absolute w-40 h-40 "
@@ -35,7 +46,11 @@ export default function NavigationHeroSection({path,title}:{path:string,title:st
           transition={{ duration: 7, repeat: Infinity }}
           style={{ right: "20%", top: "10%" }}
         >
-          <img src="https://magicads.ae/indus-viva/assets/img/breadcrumb/shape-3.png" alt="shape2" className="w-full h-full" />
+          <img
+            src="https://magicads.ae/indus-viva/assets/img/breadcrumb/shape-3.png"
+            alt="shape2"
+            className="w-full h-full"
+          />
         </motion.div>
       </div>
     </div>

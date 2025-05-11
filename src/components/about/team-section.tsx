@@ -1,12 +1,10 @@
-
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-parallax";
 import bg from "@/assets/img/bg/video-bg.jpg";
-import play from "@/assets/img/icon/play.png"
+import play from "@/assets/img/icon/play.png";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import dummyMember from "@/assets/img/new/dummy-member-01.jpg";
-
 
 const teamMembers = [
   {
@@ -93,7 +91,11 @@ export default function TeamSection() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {teamMembers.map((member) => (
-              <motion.div key={member.id} variants={itemVariants} className="group">
+              <motion.div
+                key={member.id}
+                variants={itemVariants}
+                className="group"
+              >
                 {/* Image */}
                 <motion.div
                   initial={{ width: "10%" }}
@@ -128,7 +130,11 @@ export default function TeamSection() {
         <Dialog>
           <DialogTrigger asChild>
             <button>
-              <img src={play} alt="Play" className=" cursor-pointer hover:scale-110 transition-transform" />
+              <img
+                src={play}
+                alt="Play"
+                className=" cursor-pointer hover:scale-110 transition-transform"
+              />
             </button>
           </DialogTrigger>
           <DialogContent className="max-w-5xl w-full  aspect-video">

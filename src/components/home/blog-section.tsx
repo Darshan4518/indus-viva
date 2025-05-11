@@ -86,7 +86,7 @@ export default function BlogSection() {
                   <span className="text-xs -rotate-90 ">2023</span>
                   <span className="text-xs -rotate-90 ">20</span>
                   <div className=" p-2 bg-white rounded-sm">
-                    <CalendarDays className=" text-black w-4 h-4" size={4}   />
+                    <CalendarDays className=" text-black w-4 h-4" size={4} />
                   </div>
                 </div>
                 <div className="flex-col items-center text-gray-500 text-sm">

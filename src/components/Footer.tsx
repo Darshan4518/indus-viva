@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] text-white py-6">
+    <footer className="bg-[#1a1a1a] text-white py-6 relative Z-20">
       <section className=" max-w-6xl mx-auto">
         <div className=" flex justify-between items-center my-10">
           <div className=" w-[40%] bg-gray-500/40 h-0.5" />
@@ -134,7 +134,8 @@ export default function Footer() {
         </div>
 
         <button
-          className="fixed bottom-6 right-6 bg-teal-600 text-white py-3 px-4  rounded-2xl shadow-lg hover:bg-teal-700"
+          className="fixed bottom-6 right-6 bg-teal-600 text-white py-3 px-4  rounded-2xl shadow-lg hover:bg-teal-700 z-400 transition duration-300 ease-in-out"
+          aria-label="Scroll to top"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           ↑

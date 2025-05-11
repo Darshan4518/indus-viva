@@ -7,7 +7,7 @@ import home3 from "@/assets/img/new/home-3-hero.png"
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-10">
         <div className={`absolute inset-0' bg-cover bg-center opacity-70"`}>
           
           

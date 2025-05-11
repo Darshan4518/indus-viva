@@ -51,7 +51,7 @@ const MedicalPanel = () => {
   };
 
   return (
-    <section ref={ref} >
+    <section ref={ref}>
       <NavigationHeroSection
         title="Medical Advisory Panel"
         path=" Medical Panel"

@@ -44,7 +44,7 @@ export default function CompanyValues() {
   });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-[#0e7f7614] rounded-[10%]">
+    <section ref={ref} className=" py-16 md:py-24 bg-[#0e7f7614] rounded-[10%]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <motion.div
@@ -73,13 +73,18 @@ export default function CompanyValues() {
               className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:bg-neutral-200"
             >
               <div className="mb-6">
-                <img src={value.icon} alt="icon"  />
+                <img src={value.icon} alt="icon" />
               </div>
               <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
-              <p className="text-gray-500 mb-6 text-xs " style={{
-                lineHeight:2
-              }}>{value.description}</p>
-                <ArrowRight className="ml-2 h-6 w-6" />
+              <p
+                className="text-gray-500 mb-6 text-xs "
+                style={{
+                  lineHeight: 2,
+                }}
+              >
+                {value.description}
+              </p>
+              <ArrowRight className="ml-2 h-6 w-6" />
             </motion.div>
           ))}
         </div>

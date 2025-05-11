@@ -35,12 +35,14 @@ const slides: Slide[] = [
   {
     image: "https://ismailvtl-images-project.vercel.app/startup-launch.png",
     title: "Premium Products",
-    description: "Discover the range of scientifically backed health supplements.",
+    description:
+      "Discover the range of scientifically backed health supplements.",
   },
   {
     image: "https://ismailvtl-images-project.vercel.app/startup-launch.png",
     title: "Join the Mission",
-    description: "Be part of a community driving wellness and success together.",
+    description:
+      "Be part of a community driving wellness and success together.",
   },
 ];
 
@@ -73,7 +75,10 @@ export default function LoginForm() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email <span className="text-red-500">*</span>
               </label>
               <Input
@@ -88,7 +93,10 @@ export default function LoginForm() {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="relative">
@@ -121,11 +129,17 @@ export default function LoginForm() {
                   id="show-password"
                   onCheckedChange={() => setShowPassword(!showPassword)}
                 />
-                <label htmlFor="show-password" className="ml-2 text-sm text-gray-600">
+                <label
+                  htmlFor="show-password"
+                  className="ml-2 text-sm text-gray-600"
+                >
                   Show Password
                 </label>
               </div>
-              <Link to="/forgot-password" className="text-sm text-teal-600 hover:text-teal-500">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-teal-600 hover:text-teal-500"
+              >
                 Forgot Password?
               </Link>
             </div>
@@ -139,7 +153,10 @@ export default function LoginForm() {
 
             <div className="text-center text-sm text-gray-600">
               Not registered yet?{" "}
-              <Link to="/register" className="text-teal-600 hover:text-teal-500">
+              <Link
+                to="/register"
+                className="text-teal-600 hover:text-teal-500"
+              >
                 Create an account
               </Link>
             </div>

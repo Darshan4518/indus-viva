@@ -1,9 +1,7 @@
-"use client"
-
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
   {
@@ -24,19 +22,19 @@ const faqs = [
     answer:
       "Leo site ultrices donec a volutpat penatibus mind suscipit faucibus and duis pharetra bed name socios phasellus nunce accumsan lectus morbi ridiculus. He beginning it bee won't they are shall life.",
   },
-]
+];
 
 export default function FaqSection() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleFaq = (index: number) => {
-    setActiveIndex(activeIndex === index ? -1 : index)
-  }
+    setActiveIndex(activeIndex === index ? -1 : index);
+  };
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-gray-50">
@@ -49,14 +47,18 @@ export default function FaqSection() {
           >
             <div className="flex items-center gap-2 mb-4">
               <div className="w-2 h-2 rounded-full bg-teal-600"></div>
-              <span className="text-teal-600 font-medium">CLIENT QUESTIONS</span>
+              <span className="text-teal-600 font-medium">
+                CLIENT QUESTIONS
+              </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">GENERAL QUESTIONS</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              GENERAL QUESTIONS
+            </h2>
 
             <p className="text-gray-600 mb-8">
-              Augue ullamcorper nunc libero augue blandit habitant purus felis quam persui nisi lectus. augue lobortis
-              nostra placerat penatibus
+              Augue ullamcorper nunc libero augue blandit habitant purus felis
+              quam persui nisi lectus. augue lobortis nostra placerat penatibus
             </p>
 
             <div className="space-y-4">
@@ -64,7 +66,9 @@ export default function FaqSection() {
                 <motion.div
                   key={faq.id}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   className="border border-gray-200 rounded-lg overflow-hidden"
                 >
@@ -88,7 +92,9 @@ export default function FaqSection() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="p-4 border-t border-gray-200 bg-gray-50 text-gray-600">{faq.answer}</div>
+                        <div className="p-4 border-t border-gray-200 bg-gray-50 text-gray-600">
+                          {faq.answer}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -99,7 +105,9 @@ export default function FaqSection() {
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            animate={
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+            }
             transition={{ duration: 0.8 }}
             className="hidden lg:block"
           >
@@ -110,5 +118,5 @@ export default function FaqSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

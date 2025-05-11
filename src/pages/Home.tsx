@@ -13,7 +13,6 @@ import ContactSection from "@/components/home/contact-section";
 import FooterTextSlider from "@/components/FooterTextSlider";
 
 const Home = () => {
-
   return (
     <section className=" overflow-hidden">
       <HeroSection />

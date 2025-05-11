@@ -1,8 +1,7 @@
-
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { MapPin, Mail, Phone, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const branchOffices = [
   {
@@ -32,17 +31,18 @@ const branchOffices = [
   {
     id: 4,
     location: "Hyderabad Viva Hub",
-    address: "IndusViva Healthsciences Private Limited Arks Cold Storage, Pocharam, Annojiguda, Hyderabad,500088.",
+    address:
+      "IndusViva Healthsciences Private Limited Arks Cold Storage, Pocharam, Annojiguda, Hyderabad,500088.",
     email: "support@indusviva.com",
     phone: "1800 103 4916",
   },
-]
+];
 
 export default function BranchOffices() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-gray-50">
@@ -53,10 +53,12 @@ export default function BranchOffices() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Branch Offices</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Branch Offices
+          </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Per ipsum ultrices sollicitudin iaculis platea facilisi semper aliquam up senectus cursus vivamus volutpat
-            penatibus
+            Per ipsum ultrices sollicitudin iaculis platea facilisi semper
+            aliquam up senectus cursus vivamus volutpat penatibus
           </p>
         </motion.div>
 
@@ -76,27 +78,34 @@ export default function BranchOffices() {
                 <div className="flex items-start mb-4">
                   <MapPin className="h-5 w-5 text-teal-600 mt-1 mr-2 flex-shrink-0" />
                   <h3 className="text-base font-bold">{office.location}</h3>
-                 
                 </div>
-                 <hr className="  border-gray-300 py-2" />
+                <hr className="  border-gray-300 py-2" />
 
-                <p className="text-gray-600  min-h-[120px] text-xs">{office.address}</p>
+                <p className="text-gray-600  min-h-[120px] text-xs">
+                  {office.address}
+                </p>
 
                 <div className="space-y-2 mb-6">
                   <div className="flex items-center text-teal-600">
                     <Mail className="h-4 w-4 mr-2" />
-                    <a href={`mailto:${office.email}`} className="hover:underline">
+                    <a
+                      href={`mailto:${office.email}`}
+                      className="hover:underline"
+                    >
                       {office.email}
                     </a>
                   </div>
                   <div className="flex items-center text-teal-600">
                     <Phone className="h-4 w-4 mr-2" />
-                    <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="hover:underline">
+                    <a
+                      href={`tel:${office.phone.replace(/\s/g, "")}`}
+                      className="hover:underline"
+                    >
                       {office.phone}
                     </a>
                   </div>
                 </div>
-                 <hr className="  border-gray-300 py-2" />
+                <hr className="  border-gray-300 py-2" />
 
                 <Button
                   variant="default"
@@ -111,5 +120,5 @@ export default function BranchOffices() {
         </div>
       </div>
     </section>
-  )
+  );
 }

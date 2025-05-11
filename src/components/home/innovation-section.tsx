@@ -25,7 +25,10 @@ export default function InnovationSection() {
   };
 
   return (
-    <section ref={ref} className=" bg-[#0e7f7614] py-16 md:py-24 relative z-10 ">
+    <section
+      ref={ref}
+      className=" bg-[#0e7f7614] py-16 md:py-24 relative z-10 "
+    >
       <div className="container  ">
         <motion.div
           variants={containerVariants}
@@ -66,45 +69,45 @@ export default function InnovationSection() {
           </motion.div>
         </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4 sm:px-6 lg:px-8 "
-          >
-            <motion.div variants={itemVariants}>
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Bridging Ancient Wisdom with Modern Health
-                </h2>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4 sm:px-6 lg:px-8 "
+        >
+          <motion.div variants={itemVariants}>
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Bridging Ancient Wisdom with Modern Health
+              </h2>
 
-                <p className="text-gray-700 text-xl">
-                  Salacia reticulata, revered for centuries in Ayurveda, meets
-                  modern science at Indusviva Health Sciences. We combine the
-                  time-tested benefits of this ancient herb with the latest
-                  research to create high-quality, natural health solutions. Our
-                  products empower consumers to experience the transformative
-                  effects of Salacia, promoting a healthier and more balanced
-                  life. It's the perfect harmony between tradition and
-                  innovation, offering the best of both worlds for today's
-                  health-conscious consumers.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <div className="relative overflow-hidden rounded-lg">
-                <img
-                  src={about2}
-                  alt="Modern laboratory equipment"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </motion.div>
+              <p className="text-gray-700 text-xl">
+                Salacia reticulata, revered for centuries in Ayurveda, meets
+                modern science at Indusviva Health Sciences. We combine the
+                time-tested benefits of this ancient herb with the latest
+                research to create high-quality, natural health solutions. Our
+                products empower consumers to experience the transformative
+                effects of Salacia, promoting a healthier and more balanced
+                life. It's the perfect harmony between tradition and innovation,
+                offering the best of both worlds for today's health-conscious
+                consumers.
+              </p>
+            </div>
           </motion.div>
-        </div>
+
+          <motion.div variants={itemVariants}>
+            <div className="relative overflow-hidden rounded-lg">
+              <img
+                src={about2}
+                alt="Modern laboratory equipment"
+                width={800}
+                height={600}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

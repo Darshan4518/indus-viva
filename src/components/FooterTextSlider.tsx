@@ -19,13 +19,9 @@ const FooterTextSlider = () => {
       loop={true}
       autoplay={{ delay: 0, disableOnInteraction: false }}
       speed={5000}
-      
       grabCursor={true}
-
       allowTouchMove={false}
-  
-   slidesPerView={3}
-
+      slidesPerView={3}
       breakpoints={{
         640: {
           slidesPerView: 2,
@@ -38,9 +34,7 @@ const FooterTextSlider = () => {
         },
       }}
       centeredSlides={false}
-      
       spaceBetween={30}
-     
       className="w-full bg-[radial-gradient(circle,_#088772_0%,_#5ec199_96%)]  h-[10vh]"
     >
       {texts.map((text, idx) => (

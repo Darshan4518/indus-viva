@@ -73,6 +73,55 @@ const appRouter = createBrowserRouter([
           return { Component: module.default };
         },
       },
+      {
+        path: "/blog",
+        lazy: async () => {
+          const module = await import("@/pages/Blog");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/FAQ",
+        lazy: async () => {
+          const module = await import("@/pages/Faq");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/compliance-documents",
+        lazy: async () => {
+          const module = await import("@/pages/ComplianceDocuments");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/compensation-plan",
+        lazy: async () => {
+          const module = await import("@/pages/CompensationPlan");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/service-request",
+        lazy: async () => {
+          const module = await import("@/pages/CreateServiceRequest");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/track-service",
+        lazy: async () => {
+          const module = await import("@/pages/TrackServiceRequest");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/search-vbos",
+        lazy: async () => {
+          const module = await import("@/pages/DelistedDistributors");
+          return { Component: module.default };
+        },
+      },
     ],
   },
   {

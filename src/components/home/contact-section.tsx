@@ -52,11 +52,10 @@ export default function ContactSection() {
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Creating a healthier world through nature and science.
-                 Connect with us to explore how our innovations can enhance your
-                journey to well-being.
+                Creating a healthier world through nature and science. Connect
+                with us to explore how our innovations can enhance your journey
+                to well-being.
               </h3>
-             
             </div>
 
             <form className="space-y-6">
@@ -69,7 +68,7 @@ export default function ContactSection() {
                   />
                   <User className=" h-5 w-5 text-gray-400" />
                 </div>
- 
+
                 <div className="relative flex items-center h-12 col-span-1 border border-gray-400 rounded-xl px-2">
                   <input
                     type="email"
@@ -91,8 +90,8 @@ export default function ContactSection() {
 
               <div className=" w-full">
                 <Button className=" bg-teal-600 hover:bg-teal-700 text-white py-6">
-                Send message
-              </Button>
+                  Send message
+                </Button>
               </div>
             </form>
           </motion.div>

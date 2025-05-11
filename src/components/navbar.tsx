@@ -7,7 +7,6 @@ import { Link } from "react-router";
 import logo from "@/assets/img/new/logo.svg";
 
 export default function Navbar() {
-
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -17,7 +16,7 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -38,7 +37,9 @@ export default function Navbar() {
     <motion.header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ",
-        scrolled ? "bg-[#62bf9a54] backdrop-blur-xl" : "bg-transparent shadow-xs shadow-gray-100/20",
+        scrolled
+          ? "bg-[#62bf9a54] backdrop-blur-xl"
+          : "bg-transparent shadow-xs shadow-gray-100/20"
       )}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -59,7 +60,11 @@ export default function Navbar() {
               {navItems.map((item) => (
                 <Link
                   key={item}
-                  to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  to={
+                    item === "Home"
+                      ? "/"
+                      : `/${item.toLowerCase().replace(/\s+/g, "-")}`
+                  }
                   className="text-white  transition-colors"
                 >
                   {item}
@@ -69,21 +74,12 @@ export default function Navbar() {
 
             {/* Icons */}
             <div className="flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white"
-               
-              >
+              <Button variant="ghost" size="icon" className="text-white">
                 <User className="h-5 w-5" />
                 <span className="sr-only">Login</span>
               </Button>
               <div className="relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white "
-                >
+                <Button variant="ghost" size="icon" className="text-white ">
                   <ShoppingCart className="h-5 w-5" />
                   <span className="sr-only">Cart</span>
                 </Button>
@@ -98,7 +94,11 @@ export default function Navbar() {
                 className="md:hidden text-white "
                 onClick={() => setIsOpen(!isOpen)}
               >
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {isOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
                 <span className="sr-only">Menu</span>
               </Button>
             </div>
@@ -121,7 +121,11 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <Link
                     key={item}
-                    to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    to={
+                      item === "Home"
+                        ? "/"
+                        : `/${item.toLowerCase().replace(/\s+/g, "-")}`
+                    }
                     className="text-xl font-medium text-white hover:text-teal-100 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >

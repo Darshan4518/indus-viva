@@ -7,16 +7,15 @@ import TestimonialsSection from "@/components/home/testimonials-section";
 import NavigationHeroSection from "@/components/NavigationHeroSection";
 
 const About = () => {
-
   return (
     <div>
       <NavigationHeroSection title="About Us" path="About" />
-      <WhoWeAre/>
-      <CompanyValues/>
-      <TeamSection/>
-      <FaqSection/>
-      <TestimonialsSection/>
-      <FooterTextSlider/>
+      <WhoWeAre />
+      <CompanyValues />
+      <TeamSection />
+      <FaqSection />
+      <TestimonialsSection />
+      <FooterTextSlider />
     </div>
   );
 };
