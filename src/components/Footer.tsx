@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-5 gap-8 border-t border-gray-800">
+        <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-gray-800 justify-evenly">
           <div>
             <h4 className="font-semibold mb-3">Main Links</h4>
             <ul className="space-y-2 text-gray-400">
@@ -84,36 +84,38 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Policies</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <Link to="/vbo-contract">VBO Contract</Link>
+                <Link to="#vbo-contract">VBO Contract</Link>
               </li>
               <li>
-                <Link to="/vbo-application">VBO Application</Link>
+                <Link to="#vbo-application">VBO Application</Link>
               </li>
               <li>
-                <Link to="/policies-procedures">Policies & Procedures</Link>
+                <Link to="#policies-procedures">Policies & Procedures</Link>
               </li>
               <li>
-                <Link to="/refund-policy">Return and Refund policy</Link>
+                <Link to="#refund-policy">Return and Refund policy</Link>
               </li>
               <li>
-                <Link to="/payment-policy">Payment Mode Policy</Link>
+                <Link to="#payment-policy">Payment Mode Policy</Link>
               </li>
               <li>
-                <Link to="/grievance-redressal">Grievance Redressal</Link>
+                <Link to="#grievance-redressal">Grievance Redressal</Link>
               </li>
               <li>
-                <Link to="/shipping-policy">Shipment and Delivery</Link>
+                <Link to="#shipping-policy">Shipment and Delivery</Link>
               </li>
             </ul>
           </div>
 
-          <div>
+          <div className=" space-y-2">
             <h4 className="font-semibold mb-3">Contact Info</h4>
-            <p className="text-gray-400 flex items-center gap-2">
-              <Mail className="w-4 h-4 text-white" /> support@indusviva.com
+            <p className=" text-gray-400 font-semibold text-base">Email us</p>
+            <p className="text-white flex items-center gap-2 text-lg font-semibold  ">
+              support@indusviva.com
             </p>
-            <p className="text-gray-400 flex items-center gap-2 mt-2">
-              <Phone className="w-4 h-4 text-white" /> 1800 103 4916
+            <p className=" text-gray-400 text-base font-semibold">Phone no</p>
+            <p className="text-white flex items-center gap-2 mt-2 text-lg font-semibold">
+              1800 103 4916
             </p>
           </div>
         </div>
@@ -125,10 +127,31 @@ export default function Footer() {
           </p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <div className="flex space-x-4 mt-2 md:mt-0">
-              <Link to="/csr-policy">CSR POLICY</Link>
-              <Link to="/privacy-policy">PRIVACY & POLICY</Link>
-              <Link to="/disclaimer">DISCLAIMER</Link>
-              <Link to="/terms">TERMS & CONDITIONS</Link>
+              <Link
+                to="/csr-policy"
+                className=" border-r-2 border-white/50 pr-2"
+              >
+                CSR POLICY
+              </Link>
+              <Link
+                to="/privacy-policy"
+                className=" border-r-2 border-white/50 pr-2"
+              >
+                PRIVACY & POLICY
+              </Link>
+              <Link
+                to="/disclaimer"
+                className=" border-r-2 border-white/50 pr-2"
+              >
+                DISCLAIMER
+              </Link>
+              <Link
+                to="https://magicads.ae/indus-viva/assets/img/new/pdf/Terms.pdf"
+                className=" border-r-2 border-white/50 pr-2"
+                target="_blank"
+              >
+                TERMS & CONDITIONS
+              </Link>
             </div>
           </div>
         </div>

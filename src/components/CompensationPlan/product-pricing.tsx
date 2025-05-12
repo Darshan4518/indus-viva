@@ -37,7 +37,9 @@ const pricingData = [
 
 export const ProductPricing: React.FC = () => (
   <div className="my-8 border border-gray-400 p-6 rounded-sm">
-    <h2 className="md:text-3xl text-xl font-bold text-center mb-6">Product Pricing</h2>
+    <h2 className="md:text-3xl text-xl font-bold text-center mb-6">
+      Product Pricing
+    </h2>
     <Table>
       <TableHeader>
         <TableRow>

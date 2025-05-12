@@ -122,6 +122,27 @@ const appRouter = createBrowserRouter([
           return { Component: module.default };
         },
       },
+      {
+        path: "/csr-policy",
+        lazy: async () => {
+          const module = await import("@/pages/CsrPolicy");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/disclaimer",
+        lazy: async () => {
+          const module = await import("@/pages/Disclaimer");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/privacy-policy",
+        lazy: async () => {
+          const module = await import("@/pages/PrivacyPolicy");
+          return { Component: module.default };
+        },
+      },
     ],
   },
   {

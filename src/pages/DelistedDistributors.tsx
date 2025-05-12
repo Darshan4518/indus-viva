@@ -53,9 +53,15 @@ export default function DelistedDistributors() {
                 <TableBody>
                   {data.map((user, index) => (
                     <TableRow key={index}>
-                      <TableCell className=" text-lg">{user.firstName}</TableCell>
-                      <TableCell className=" text-lg">{user.lastName}</TableCell>
-                      <TableCell className=" text-lg">{user.username}</TableCell>
+                      <TableCell className=" text-lg">
+                        {user.firstName}
+                      </TableCell>
+                      <TableCell className=" text-lg">
+                        {user.lastName}
+                      </TableCell>
+                      <TableCell className=" text-lg">
+                        {user.username}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

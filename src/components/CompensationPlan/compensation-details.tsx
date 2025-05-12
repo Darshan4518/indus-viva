@@ -22,7 +22,10 @@ const bonuses = [
 export const CompensationDetails: React.FC = () => (
   <div className="my-8">
     <h2 className="text-xl font-semibold mb-4">Compensation Plan</h2>
-    <p>There are 7 ways of earning Revenue and 7 ways of earning Bonus with IndusViva.</p>
+    <p>
+      There are 7 ways of earning Revenue and 7 ways of earning Bonus with
+      IndusViva.
+    </p>
     <div className="mt-6">
       <h3 className="text-lg font-semibold mb-2">Revenues</h3>
       <ul className="list-disc pl-6 space-y-1">
