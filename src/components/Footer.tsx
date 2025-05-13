@@ -5,27 +5,34 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] text-white py-6 relative Z-20">
-      <section className=" max-w-6xl mx-auto">
-        <div className=" flex justify-between items-center my-10">
-          <div className=" w-[40%] bg-gray-500/40 h-0.5" />
-          <h2>Global Trusted Partner</h2>
-          <div className=" w-[40%] bg-gray-500/40 h-0.5" />
+    <footer className="bg-[#1a1a1a] text-white py-6 relative z-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Divider Title */}
+        <div className="flex flex-col sm:flex-row justify-center items-center my-10 gap-4 text-center">
+          <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
+          <h2 className="text-base sm:text-lg font-medium">
+            Global Trusted Partner
+          </h2>
+          <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
         </div>
 
+        {/* Brand Slider */}
         <FooterBrandSlider />
 
-        <div className=" flex items-center justify-between my-4 py-6">
-          <img src={logo} alt="Logo" className="h-10 mb-4" />
-          <div className=" w-[60%] bg-gray-500/30 h-0.5" />
-          <div className="flex space-x-4 mt-4 text-gray-400">
+        {/* Logo and Social Icons */}
+        <div className="flex flex-col sm:flex-row items-center justify-between my-6 gap-4">
+          <img src={logo} alt="Logo" className="h-10" />
+          <div className="hidden sm:block w-full sm:w-[60%] bg-gray-500/30 h-0.5" />
+          <div className="flex space-x-4 text-gray-400">
             <Facebook className="w-5 h-5 hover:text-white" />
             <Twitter className="w-5 h-5 hover:text-white" />
             <Linkedin className="w-5 h-5 hover:text-white" />
           </div>
         </div>
 
-        <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-gray-800 justify-evenly">
+        {/* Link Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-800 py-8 text-sm">
+          {/* Main Links */}
           <div>
             <h4 className="font-semibold mb-3">Main Links</h4>
             <ul className="space-y-2 text-gray-400">
@@ -53,6 +60,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
@@ -80,84 +88,106 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Policies */}
           <div>
             <h4 className="font-semibold mb-3">Policies</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <Link to="#vbo-contract">VBO Contract</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/02/VBO-Contract-C.pdf"
+                  target="_blank"
+                >
+                  VBO Contract
+                </Link>
               </li>
               <li>
-                <Link to="#vbo-application">VBO Application</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/01/Directseller-Application-Form.pdf"
+                  target="_blank"
+                >
+                  VBO Application
+                </Link>
               </li>
               <li>
-                <Link to="#policies-procedures">Policies & Procedures</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/01/policies-and-procedures.pdf"
+                  target="_blank"
+                >
+                  Policies & Procedures
+                </Link>
               </li>
               <li>
-                <Link to="#refund-policy">Return and Refund policy</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/02/Return-Refund-Policy_C.pdf"
+                  target="_blank"
+                >
+                  Return and Refund policy
+                </Link>
               </li>
               <li>
-                <Link to="#payment-policy">Payment Mode Policy</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/01/Payment-Mode-Policy-C.pdf"
+                  target="_blank"
+                >
+                  Payment Mode Policy
+                </Link>
               </li>
               <li>
-                <Link to="#grievance-redressal">Grievance Redressal</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/01/Grievance-redressal.pdf"
+                  target="_blank"
+                >
+                  Grievance Redressal
+                </Link>
               </li>
               <li>
-                <Link to="#shipping-policy">Shipment and Delivery</Link>
+                <Link
+                  to="https://indusviva.com/wp-content/uploads/2025/01/Shipment-and-delivery-policy.pdf"
+                  target="_blank"
+                >
+                  Shipment and Delivery
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div className=" space-y-2">
+          {/* Contact Info */}
+          <div className="space-y-2">
             <h4 className="font-semibold mb-3">Contact Info</h4>
-            <p className=" text-gray-400 font-semibold text-base">Email us</p>
-            <p className="text-white flex items-center gap-2 text-lg font-semibold  ">
+            <p className="text-gray-400 font-semibold">Email us</p>
+            <p className="text-white text-lg font-semibold">
               support@indusviva.com
             </p>
-            <p className=" text-gray-400 text-base font-semibold">Phone no</p>
-            <p className="text-white flex items-center gap-2 mt-2 text-lg font-semibold">
-              1800 103 4916
-            </p>
+            <p className="text-gray-400 font-semibold">Phone no</p>
+            <p className="text-white text-lg font-semibold">1800 103 4916</p>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center px-6 py-4">
-          <p>
+        {/* Bottom Legal + Social */}
+        <div className="border-t border-gray-800 text-xs text-gray-400 flex flex-col md:flex-row justify-between items-center gap-2 px-4 py-4">
+          <p className="text-center">
             © Copyright 2025 | Powered by{" "}
             <span className="text-green-500">Grace Media</span>
           </p>
-          <div className="flex space-x-4 mt-2 md:mt-0">
-            <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 mt-2 md:mt-0">
-              <Link
-                to="/csr-policy"
-                className="md:border-r-2 border-white/50 md:pr-2"
-              >
-                CSR POLICY
-              </Link>
-              <Link
-                to="/privacy-policy"
-                className="md:border-r-2 border-white/50 md:pr-2"
-              >
-                PRIVACY & POLICY
-              </Link>
-              <Link
-                to="/disclaimer"
-                className="md:border-r-2 border-white/50 md:pr-2"
-              >
-                DISCLAIMER
-              </Link>
-              <Link
-                to="https://magicads.ae/indus-viva/assets/img/new/pdf/Terms.pdf"
-                className="md:pr-2"
-                target="_blank"
-              >
-                TERMS & CONDITIONS
-              </Link>
-            </div>
+          <div className="flex flex-wrap justify-center md:justify-end gap-2 text-center mt-2 md:mt-0">
+            <Link to="/csr-policy">CSR POLICY</Link>
+            <span className="hidden md:inline">|</span>
+            <Link to="/privacy-policy">PRIVACY & POLICY</Link>
+            <span className="hidden md:inline">|</span>
+            <Link to="/disclaimer">DISCLAIMER</Link>
+            <span className="hidden md:inline">|</span>
+            <Link
+              to="https://magicads.ae/indus-viva/assets/img/new/pdf/Terms.pdf"
+              target="_blank"
+            >
+              TERMS & CONDITIONS
+            </Link>
           </div>
         </div>
 
+        {/* Scroll to Top Button */}
         <button
-          className="fixed bottom-6 right-6 bg-teal-600 text-white py-3 px-4  rounded-2xl shadow-lg hover:bg-teal-700 z-400 transition duration-300 ease-in-out"
+          className="fixed bottom-6 right-6 bg-teal-600 text-white py-2 px-3 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out"
           aria-label="Scroll to top"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >

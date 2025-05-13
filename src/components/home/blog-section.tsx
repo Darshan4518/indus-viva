@@ -36,30 +36,32 @@ export default function BlogSection() {
   });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-white  max-w-7xl mx-auto">
+    <section ref={ref} className="py-12 md:py-24 bg-white w-full">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
+        <div className="mb-10 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 mb-4"
+            className="flex items-center gap-2 mb-3 sm:mb-4"
           >
             <div className="w-2 h-2 rounded-full bg-teal-600"></div>
-            <span className="text-teal-600 font-medium">BLOG ARTICLES</span>
+            <span className="text-teal-600 font-medium text-sm sm:text-base">
+              BLOG ARTICLES
+            </span>
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900"
           >
             RECENT BLOG ARTICLES
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {blogPosts.map((post, index) => (
             <motion.div
               key={post.id}
@@ -72,35 +74,36 @@ export default function BlogSection() {
               transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
               className="group"
             >
-              <div className="overflow-hidden rounded-lg mb-6">
+              <div className="overflow-hidden rounded-lg mb-4 sm:mb-6">
                 <img
                   src={post.image || "/placeholder.svg"}
                   alt={post.title}
-                  className="w-full h-75 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-52 sm:h-60 md:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-teal-600 text-white text-xs gap-3 py-4 px-2 flex flex-col items-center justify-center rounded-lg">
-                  <span className="text-xs -rotate-90 ">SEP</span>
-                  <span className="text-xs -rotate-90 ">2023</span>
-                  <span className="text-xs -rotate-90 ">20</span>
-                  <div className=" p-2 bg-white rounded-sm">
-                    <CalendarDays className=" text-black w-4 h-4" size={4} />
+              <div className="flex items-start gap-4 mb-4">
+                <div className="bg-teal-600 text-white text-xs gap-2 py-2 px-2 flex flex-col items-center justify-center rounded-lg min-w-[48px]">
+                  <span className="-rotate-90 text-xs">SEP</span>
+                  <span className="-rotate-90 text-xs">2023</span>
+                  <span className="-rotate-90 text-xs">20</span>
+                  <div className="p-1 bg-white rounded-sm">
+                    <CalendarDays className="text-black w-4 h-4" />
                   </div>
                 </div>
-                <div className="flex-col items-center text-gray-500 text-sm">
-                  <div className="flex items-center gap-1">
+
+                <div className="flex-col text-gray-700 text-sm">
+                  <div className="flex items-center gap-1 mb-1">
                     <div className="w-1 h-1 rounded-full bg-teal-600"></div>
                     <span>{post.category}</span>
                   </div>
 
-                  <h3 className=" text-xl md:text-3xl font-bold mb-4 group-hover:text-teal-600 transition-colors">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 group-hover:text-teal-600 transition-colors">
                     {post.title}
                   </h3>
                   <a
                     href="#"
-                    className="inline-flex mt-4 items-center text-xl text-teal-600 font-medium hover:text-teal-700 transition-colors"
+                    className="inline-flex items-center text-sm sm:text-base text-teal-600 font-medium hover:text-teal-700 transition-colors mt-2"
                   >
                     Read More
                     <svg
@@ -113,7 +116,7 @@ export default function BlogSection() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className=" h-6 w-6 -rotate-45"
+                      className="h-5 w-5 ml-1 -rotate-45"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />

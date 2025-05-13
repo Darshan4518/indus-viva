@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const videoUrls = [
-  "https://www.youtube.com/embed/gwDXyKoFCXs?mute=1&amp;autoplay=1",
+  "https://www.youtube.com/embed/gwDXyKoFCXs?mute=1&autoplay=1",
   "https://www.youtube.com/embed/GVF9BTLwS_o?mute=1&autoplay=1",
   "https://www.youtube.com/embed/d8rxRDhytEE?mute=1&autoplay=1",
   "https://www.youtube.com/embed/LgxXWLk4s08?mute=1&autoplay=1",
@@ -46,16 +46,18 @@ export default function VideosSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
+              className="w-full"
             >
-              <iframe
-                width="100%"
-                height="315"
-                src={url}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
-              ></iframe>
+              <div className="w-full aspect-video">
+                <iframe
+                  src={url}
+                  title={`YouTube video ${index + 1}`}
+                  frameBorder="0"
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </motion.div>
           ))}
         </div>

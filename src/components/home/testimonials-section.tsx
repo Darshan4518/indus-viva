@@ -63,19 +63,19 @@ export default function TestimonialsSection() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section ref={ref} className="relative z-10 py-16 md:py-24 bg-gray-50 ">
+    <section ref={ref} className="relative z-10 py-16 md:py-24 bg-gray-50 overflow-hidden">
       <img
         src={home5test}
-        alt="hometest"
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        alt="Testimonial Background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8  relative z-10">
-        <div className="mb-12">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 mb-4"
+            className="flex justify-center items-center gap-2 mb-4"
           >
             <div className="w-2 h-2 rounded-full bg-teal-600"></div>
             <span className="text-teal-600 font-medium">OUR TESTIMONIALS</span>
@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900"
           >
             HAPPY BUSINESSES
           </motion.h2>
@@ -94,10 +94,11 @@ export default function TestimonialsSection() {
         <div className="relative mt-12">
           <Swiper
             modules={[Navigation, Pagination]}
-            spaceBetween={24}
+            spaceBetween={16}
             slidesPerView={1}
             breakpoints={{
-              640: { slidesPerView: 2 },
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
             navigation={{
@@ -111,22 +112,18 @@ export default function TestimonialsSection() {
               // @ts-expect-error
               swiper.params.navigation.nextEl = nextRef.current;
             }}
-            className="!pb-14"
+            className="!pb-16"
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
                 <motion.div
-                  initial={{ opacity: 0, width: "10%" }}
-                  animate={
-                    inView
-                      ? { opacity: 1, width: "100%" }
-                      : { opacity: 0, width: "10%" }
-                  }
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{
                     duration: 0.8,
                     delay: 0.3 + testimonial.id * 0.1,
                   }}
-                  className={`rounded-lg p-12 h-full ${testimonial.bgColor} bg-white shadow-sm w-[30%] `}
+                  className={`rounded-xl p-6 sm:p-8 md:p-10 h-full ${testimonial.bgColor} shadow-md`}
                 >
                   <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -137,10 +134,12 @@ export default function TestimonialsSection() {
                     ))}
                   </div>
 
-                  <p className="text-gray-700 mb-6">{testimonial.content}</p>
+                  <p className="text-gray-700 mb-6 text-sm sm:text-base">
+                    {testimonial.content}
+                  </p>
 
                   <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 mr-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-gray-200 mr-4">
                       <img
                         src={testimonial.avatar || "/placeholder.svg"}
                         alt={testimonial.name}
@@ -148,10 +147,10 @@ export default function TestimonialsSection() {
                       />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">
                         {testimonial.name}
                       </h4>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-xs sm:text-sm text-gray-500">
                         {testimonial.title}
                       </p>
                     </div>
@@ -161,16 +160,16 @@ export default function TestimonialsSection() {
             ))}
           </Swiper>
 
-          <div className="flex justify-end gap-2 mt-6">
+          <div className="flex justify-center sm:justify-end gap-2 mt-8">
             <button
               ref={prevRef}
-              className="w-12 h-12 rounded-full bg-teal-500 text-white flex items-center justify-center hover:bg-teal-600 transition-colors"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-500 text-white flex items-center justify-center hover:bg-teal-600 transition"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               ref={nextRef}
-              className="w-12 h-12 rounded-full bg-teal-500 text-white flex items-center justify-center hover:bg-teal-600 transition-colors"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-500 text-white flex items-center justify-center hover:bg-teal-600 transition"
             >
               <ChevronRight className="h-5 w-5" />
             </button>

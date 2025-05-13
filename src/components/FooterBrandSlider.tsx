@@ -1,8 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 //@ts-expect-error
 import "swiper/css";
-//@ts-expect-error
-import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 
 import brand1 from "@/assets/img/brand/brand-b-01.png";
@@ -21,29 +19,31 @@ const FooterBrandSlider = () => {
     brand3,
     brand4,
   ];
+
   return (
     <Swiper
       modules={[Autoplay]}
-      spaceBetween={50}
-      slidesPerView={5}
+      spaceBetween={30}
       loop={true}
-      autoplay={{ delay: 0, disableOnInteraction: false }}
-      speed={3000}
-      grabCursor={true}
+      speed={5000}
+      slidesPerView={2}
       allowTouchMove={false}
+      autoplay={{ delay: 1, disableOnInteraction: false }}
+      grabCursor={true}
       breakpoints={{
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        1024: { slidesPerView: 5 },
+        480: { slidesPerView: 3 },
+        640: { slidesPerView: 4 },
+        768: { slidesPerView: 5 },
+        1024: { slidesPerView: 6 },
       }}
-      className="w-full py-6  border-b border-neutral-800 "
+      className="w-full py-6 border-b border-neutral-800"
     >
       {brands.map((src, idx) => (
-        <SwiperSlide key={idx}>
+        <SwiperSlide key={idx} className="flex justify-center items-center">
           <img
             src={src}
             alt={`brand-${idx}`}
-            className="mx-auto h-10 object-contain"
+            className="h-10 sm:h-12 object-contain mx-auto"
           />
         </SwiperSlide>
       ))}

@@ -12,20 +12,24 @@ export default function PhilosophySection() {
   });
 
   return (
-    <section ref={ref} className=" relative py-16 md:py-24 ">
+    <section
+      ref={ref}
+      className="relative py-16 md:py-24 bg-white overflow-hidden"
+    >
+      {/* Background image */}
       <img
         src={aboutbg}
-        alt="aboutbg"
-        className=" absolute inset-0 w-full h-full bg-cover  "
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
+
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left image */}
           <motion.div
-            initial={{ opacity: 0, width: "10%" }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={
-              inView
-                ? { opacity: 1, width: "100%" }
-                : { opacity: 0, width: "10%" }
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }
             }
             transition={{ duration: 0.8 }}
             className="relative rounded-lg overflow-hidden"
@@ -37,21 +41,22 @@ export default function PhilosophySection() {
             />
           </motion.div>
 
-          <div className="space-y-6">
+          {/* Right content */}
+          <div className="space-y-6 text-center lg:text-left">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900"
             >
-              The Philosophy Behind Our products
+              The Philosophy Behind Our Products
             </motion.h2>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-gray-700 space-y-4"
+              className="text-base sm:text-lg text-gray-700 space-y-4"
             >
               <p>
                 Ayurveda, an age-old Indian system of medicine deeply rooted in{" "}
@@ -66,17 +71,17 @@ export default function PhilosophySection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex justify-evenly items-center  sm:flex-row gap-4 pt-4 max-w-2xl"
+              className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 pt-4"
             >
-              <Button className="bg-teal-600 hover:bg-teal-700 text-white py-8 px-10 rounded-none text-sm">
+              <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-sm rounded-none w-full sm:w-auto">
                 Read More
               </Button>
-              <div className=" flex items-center">
-                <div className=" p-5 rounded-full border border-black flex items-center justify-center">
-                  <Play className=" h-4 w-4" />
+
+              <div className="flex items-center space-x-3">
+                <div className="p-4 rounded-full border border-black flex items-center justify-center">
+                  <Play className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <p className=" text-gray-600 text-xl md:text-3xl ml-3">
-                  {" "}
+                <p className="text-gray-600 text-lg sm:text-xl md:text-2xl">
                   Play Video
                 </p>
               </div>
