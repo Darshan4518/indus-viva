@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
-import { User, ShoppingCart, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router";
 import logo from "@/assets/img/new/logo.svg";
+import logoblack from "@/assets/img/new/logo-black.png";
+
+import CartSheet from "./cart/CartSheet";
+import VerificationDialog from "./VerificationDailog";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,7 +44,7 @@ export default function Navbar() {
   return (
     <motion.header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ",
+        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
         scrolled
           ? "bg-[#62bf9a54] backdrop-blur-xl"
           : "bg-transparent shadow-xs shadow-gray-100/20"
@@ -46,7 +54,7 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="relative z-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl h-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-7xl h-20">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
@@ -56,7 +64,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden lg:flex xl:space-x-8 space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item}
@@ -65,7 +73,7 @@ export default function Navbar() {
                       ? "/"
                       : `/${item.toLowerCase().replace(/\s+/g, "-")}`
                   }
-                  className="text-white  transition-colors"
+                  className="text-white transition-colors"
                 >
                   {item}
                 </Link>
@@ -73,70 +81,69 @@ export default function Navbar() {
             </nav>
 
             {/* Icons */}
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon" className="text-white">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Login</span>
-              </Button>
-              <div className="relative">
-                <Button variant="ghost" size="icon" className="text-white ">
-                  <ShoppingCart className="h-5 w-5" />
-                  <span className="sr-only">Cart</span>
-                </Button>
-                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
-                  3
-                </span>
-              </div>
-              {/* Mobile Menu Toggle */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden text-white "
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                {isOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-                <span className="sr-only">Menu</span>
-              </Button>
+            <div className="flex items-center space-x-6">
+              <VerificationDialog />
+              <CartSheet />
+              <Sheet>
+                <SheetTrigger
+                  asChild
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
+                  <Menu className="h-7 w-7" color="white" />
+                </SheetTrigger>
+
+                <SheetContent
+                  side="right"
+                  className="w-[320px] px-6 pt-6 overflow-y-scroll"
+                >
+                  {/* Logo & Close Button */}
+                  <div className="flex items-center justify-between mb-8">
+                    <img src={logoblack} alt="Logo" className="h-8" />
+                  </div>
+
+                  {/* Navigation */}
+                  <nav className="space-y-4 md:hidden">
+                    {navItems.map((item) => (
+                      <SheetClose asChild key={item}>
+                        <Link
+                          to={
+                            item === "Home"
+                              ? "/"
+                              : `/${item.toLowerCase().replace(/\s+/g, "-")}`
+                          }
+                          className="flex items-center justify-between text-black font-medium border-b py-2"
+                        >
+                          {item}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </nav>
+
+                  {/* Divider */}
+                  <div className="my-6 md:my-0 border-t md:border-none pt-4" />
+
+                  {/* Information Section */}
+                  <div className="space-y-3 text-sm text-black">
+                    <h3 className="text-base font-bold">Information</h3>
+                    <p>📞 1800 103 4916</p>
+                    <p>📧 support@indusviva.com</p>
+                    <p>
+                      📍 IndusViva HealthSciences Private Limited, No 92-1–36,
+                      <br />
+                      Viva Tower, Nandi Durga Road,
+                      <br />
+                      Jayamahal Extension, Bangalore (Bangalore) Urban,
+                      Karnataka – 560046.
+                    </p>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className=" bg-teal-600 text-white md:hidden"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <div className="container mx-auto px-4 py-20">
-              <nav className="flex flex-col space-y-6">
-                {navItems.map((item) => (
-                  <Link
-                    key={item}
-                    to={
-                      item === "Home"
-                        ? "/"
-                        : `/${item.toLowerCase().replace(/\s+/g, "-")}`
-                    }
-                    className="text-xl font-medium text-white hover:text-teal-100 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.header>
   );
 }

@@ -136,6 +136,13 @@ const appRouter = createBrowserRouter([
           return { Component: module.default };
         },
       },
+       {
+        path: "/checkout",
+        lazy: async () => {
+          const module = await import("@/pages/CartCheckout");
+          return { Component: module.default };
+        },
+      },
       {
         path: "/privacy-policy",
         lazy: async () => {

@@ -1,4 +1,4 @@
-import { Mail, Phone, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Linkedin } from "lucide-react";
 import FooterBrandSlider from "./FooterBrandSlider";
 import logo from "@/assets/img/new/logo.svg";
 import { Link } from "react-router";
@@ -126,28 +126,28 @@ export default function Footer() {
             <span className="text-green-500">Grace Media</span>
           </p>
           <div className="flex space-x-4 mt-2 md:mt-0">
-            <div className="flex space-x-4 mt-2 md:mt-0">
+            <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 mt-2 md:mt-0">
               <Link
                 to="/csr-policy"
-                className=" border-r-2 border-white/50 pr-2"
+                className="md:border-r-2 border-white/50 md:pr-2"
               >
                 CSR POLICY
               </Link>
               <Link
                 to="/privacy-policy"
-                className=" border-r-2 border-white/50 pr-2"
+                className="md:border-r-2 border-white/50 md:pr-2"
               >
                 PRIVACY & POLICY
               </Link>
               <Link
                 to="/disclaimer"
-                className=" border-r-2 border-white/50 pr-2"
+                className="md:border-r-2 border-white/50 md:pr-2"
               >
                 DISCLAIMER
               </Link>
               <Link
                 to="https://magicads.ae/indus-viva/assets/img/new/pdf/Terms.pdf"
-                className=" border-r-2 border-white/50 pr-2"
+                className="md:pr-2"
                 target="_blank"
               >
                 TERMS & CONDITIONS
