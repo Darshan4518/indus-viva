@@ -2,6 +2,7 @@ import { Facebook, Twitter, Linkedin } from "lucide-react";
 import FooterBrandSlider from "./FooterBrandSlider";
 import logo from "@/assets/img/new/logo.svg";
 import { Link } from "react-router";
+import FooterCertificateSlider from "./FooterCertificate";
 
 export default function Footer() {
   return (
@@ -16,8 +17,17 @@ export default function Footer() {
           <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
         </div>
 
-        {/* Brand Slider */}
         <FooterBrandSlider />
+
+        <div className="flex flex-col sm:flex-row justify-center items-center my-10 gap-4 text-center">
+          <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
+          <h2 className="text-base sm:text-lg font-medium">
+            Certified by Leading Authorities
+          </h2>
+          <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
+        </div>
+
+        <FooterCertificateSlider />
 
         {/* Logo and Social Icons */}
         <div className="flex flex-col sm:flex-row items-center justify-between my-6 gap-4">

@@ -1,7 +1,6 @@
 import HeroSection from "@/components/home/hero-section";
 import AboutSection from "@/components/home/about-section";
 import SustainabilitySection from "@/components/home/sustainability-section";
-import InnovationSection from "@/components/home/innovation-section";
 import ProductsSection from "@/components/home/products-section";
 import VideosSection from "@/components/home/videos-section";
 import QualitySection from "@/components/home/quality-section";
@@ -18,7 +17,6 @@ const Home = () => {
       <HeroSection />
       <AboutSection />
       <SustainabilitySection />
-      <InnovationSection />
       <ProductsSection />
       <QualitySection />
       <VideosSection />

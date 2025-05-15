@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const videoUrls = [
-  "https://www.youtube.com/embed/gwDXyKoFCXs?mute=1&autoplay=1",
-  "https://www.youtube.com/embed/GVF9BTLwS_o?mute=1&autoplay=1",
-  "https://www.youtube.com/embed/d8rxRDhytEE?mute=1&autoplay=1",
-  "https://www.youtube.com/embed/LgxXWLk4s08?mute=1&autoplay=1",
-  "https://www.youtube.com/embed/C0JPMlDhF5g?mute=1&autoplay=1",
+  "https://www.youtube.com/embed/gwDXyKoFCXs?mute=1&autoplay=1&loop=1&playlist=gwDXyKoFCXs",
+  "https://www.youtube.com/embed/GVF9BTLwS_o?mute=1&autoplay=1&loop=1&playlist=GVF9BTLwS_o",
+  "https://www.youtube.com/embed/d8rxRDhytEE?mute=1&autoplay=1&loop=1&playlist=d8rxRDhytEE",
+  "https://www.youtube.com/embed/LgxXWLk4s08?mute=1&autoplay=1&loop=1&playlist=LgxXWLk4s08",
+  "https://www.youtube.com/embed/C0JPMlDhF5g?mute=1&autoplay=1&loop=1&playlist=C0JPMlDhF5g",
 ];
 
 export default function VideosSection() {
@@ -16,7 +16,7 @@ export default function VideosSection() {
   });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-white text-black">
+    <section ref={ref} className="py-12 md:py-16 bg-white text-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <motion.div
@@ -56,6 +56,7 @@ export default function VideosSection() {
                   className="w-full h-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 ></iframe>
               </div>
             </motion.div>

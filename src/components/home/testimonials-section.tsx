@@ -63,7 +63,10 @@ export default function TestimonialsSection() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section ref={ref} className="relative z-10 py-16 md:py-24 bg-gray-50 overflow-hidden">
+    <section
+      ref={ref}
+      className="relative z-10 py-16 md:py-24 bg-gray-50 overflow-hidden"
+    >
       <img
         src={home5test}
         alt="Testimonial Background"
@@ -118,7 +121,9 @@ export default function TestimonialsSection() {
               <SwiperSlide key={testimonial.id}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{
                     duration: 0.8,
                     delay: 0.3 + testimonial.id * 0.1,

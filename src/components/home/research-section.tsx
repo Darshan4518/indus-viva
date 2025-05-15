@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import abouth5 from "@/assets/img/new/about-h-5.png";
 import { Parallax } from "react-parallax";
-import solidBg from "@/assets/img/new/solid-bg.png";
+import solidBg from "@/assets/img/bg/solid-bg.png";
 
 export default function ResearchSection() {
   const [ref, inView] = useInView({
@@ -13,7 +13,7 @@ export default function ResearchSection() {
 
   return (
     <section className="relative">
-      <section ref={ref} className="w-full bg-white/90 py-12 sm:py-16 md:py-20">
+      <section ref={ref} className="w-full bg-[#0e7f7614] ">
         <div className="container mx-auto px-4 sm:px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* Left Text Content */}

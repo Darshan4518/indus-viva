@@ -3,10 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 
-import brand1 from "@/assets/img/brand/brand-b-01.png";
-import brand2 from "@/assets/img/brand/brand-b-02.png";
-import brand3 from "@/assets/img/brand/brand-b-03.png";
-import brand4 from "@/assets/img/brand/brand-b-04.png";
+import brand1 from "../assets/img/brand2/Brand--02.png";
+import brand2 from "../assets/img/brand2/Brand--03.png";
+import brand3 from "../assets/img/brand2/Brand--04.png";
+import brand4 from "../assets/img/brand2/Brand--05.png";
+import brand5 from "../assets/img/brand2/Brand--06.png";
+import brand6 from "../assets/img/brand2/Brand--07.png";
+import brand7 from "../assets/img/brand2/Brand--08.png";
+import brand8 from "../assets/img/brand2/Brand--09.png";
+import brand9 from "../assets/img/brand2/Brand--11.png";
 
 const FooterBrandSlider = () => {
   const brands = [
@@ -14,10 +19,11 @@ const FooterBrandSlider = () => {
     brand2,
     brand3,
     brand4,
-    brand1,
-    brand2,
-    brand3,
-    brand4,
+    brand5,
+    brand6,
+    brand7,
+    brand8,
+    brand9,
   ];
 
   return (
@@ -36,7 +42,7 @@ const FooterBrandSlider = () => {
         768: { slidesPerView: 5 },
         1024: { slidesPerView: 6 },
       }}
-      className="w-full py-6 border-b border-neutral-800"
+      className="w-full py-6  md:mt-10 mt-4"
     >
       {brands.map((src, idx) => (
         <SwiperSlide key={idx} className="flex justify-center items-center">

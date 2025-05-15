@@ -1,17 +1,15 @@
-
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import mainBg from '@/assets/img/new/main_background.jpeg'
-import home3 from "@/assets/img/new/home-3-hero.png"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import mainBg from "@/assets/img/new/main_background.jpeg";
+import home3 from "@/assets/img/new/home-3-hero.png";
 
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       <div className="absolute inset-0 z-10">
-        <div className={`absolute inset-0' bg-cover bg-center opacity-70"`}>
-          
-          
-        </div>
+        <div
+          className={`absolute inset-0' bg-cover bg-center opacity-70"`}
+        ></div>
         <img src={mainBg} alt="mainBg" className=" w-full h-full" />
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/30 to-teal-800/30"></div>
       </div>
@@ -27,7 +25,8 @@ export default function HeroSection() {
               NURTURING HEALTH <br />
               <div className="mt-2  flex gap-2 items-center">
                 <img src={home3} alt="home" className=" w-20 h-20 " />
-                <span>THROUGH</span></div> 
+                <span>THROUGH</span>
+              </div>
               <span className=" mt-2 block">NATURE'S LEGACY</span>
             </h1>
           </motion.div>
@@ -39,8 +38,8 @@ export default function HeroSection() {
             className="mt-8 max-w-2xl"
           >
             <p className="text-lg text-teal-50">
-              We create entrepreneurship. We empower entrepreneurs. We advocate Advanced Ayurveda. We formulate,
-              manufacture and market.
+              We create entrepreneurship. We empower entrepreneurs. We advocate
+              Advanced Ayurveda. We formulate, manufacture and market.
             </p>
           </motion.div>
 
@@ -50,7 +49,10 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-10"
           >
-            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white px-12 py-8">
+            <Button
+              size="lg"
+              className="bg-teal-600 hover:bg-teal-700 text-white px-12 py-8"
+            >
               Discover More
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +64,7 @@ export default function HeroSection() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                 className=" h-10 w-10 -rotate-45"
+                className=" h-10 w-10 -rotate-45"
               >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
@@ -72,5 +74,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
