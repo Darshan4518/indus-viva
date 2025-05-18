@@ -59,7 +59,6 @@ export default function LoginForm() {
   return (
     <section className="min-h-screen bg-[#0a7c7330] py-12 flex items-center justify-center">
       <div className="container max-w-6xl bg-white rounded-lg shadow-sm grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-        {/* Left: Login Form */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -163,7 +162,6 @@ export default function LoginForm() {
           </form>
         </motion.div>
 
-        {/* Right: Swiper Carousel */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

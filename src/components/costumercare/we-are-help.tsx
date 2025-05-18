@@ -1,5 +1,6 @@
 import { ArrowUpRight, Clock, PhoneCall } from "lucide-react";
 import { Button } from "../ui/button";
+import { Link } from "react-router";
 
 const WeAreHelp = () => {
   return (
@@ -43,12 +44,16 @@ const WeAreHelp = () => {
         </p>
 
         <div className="flex flex-wrap gap-4">
-          <Button className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-6  flex items-center gap-2 ">
+         <Link to="/service-request">
+          <Button  className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-6  flex items-center gap-2 ">
             Create Service Request <ArrowUpRight size={16} />
           </Button>
+         </Link>
+          <Link to="/track-service">
           <Button className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-6 flex items-center gap-2">
             Track Service Request <ArrowUpRight size={16} />
           </Button>
+          </Link>
         </div>
       </div>
       <div className="block">

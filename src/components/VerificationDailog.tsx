@@ -39,7 +39,6 @@ export default function VerificationDialog() {
     };
   }, [open]);
 
-  // Handle escape key press
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -62,7 +61,6 @@ export default function VerificationDialog() {
       newOtp[index] = value;
       setOtp(newOtp);
 
-      // Auto-focus next input
       if (value !== "" && index < 3) {
         otpRefs[index + 1].current?.focus();
       }
@@ -101,8 +99,6 @@ export default function VerificationDialog() {
 
   return (
     <div className="relativ top-10">
-      {/* Dialog Trigger */}
-
       <User
         className="h-6 w-6"
         onClick={() => setOpen(true)}
@@ -112,7 +108,6 @@ export default function VerificationDialog() {
         }}
       />
 
-      {/* Custom Dialog */}
       {open && (
         <motion.div
           className="fixed inset-0 z-[999] bg-black/50 overflow-y-auto min-h-screen"

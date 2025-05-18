@@ -42,7 +42,6 @@ export default function Footer() {
 
         {/* Link Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-800 py-8 text-sm">
-          {/* Main Links */}
           <div>
             <h4 className="font-semibold mb-3">Main Links</h4>
             <ul className="space-y-2 text-gray-400">
@@ -53,19 +52,19 @@ export default function Footer() {
                 <Link to="/about">About us</Link>
               </li>
               <li>
-                <Link to="/career">Career</Link>
+                <Link to="/careers">Career</Link>
               </li>
               <li>
                 <Link to="/medical-panel">Medical Panel</Link>
               </li>
               <li>
-                <Link to="/products">Our Products</Link>
+                <Link to="/our-products">Our Products</Link>
               </li>
               <li>
                 <Link to="/virtual-office">Virtual Office</Link>
               </li>
               <li>
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/contact-us">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -166,10 +165,12 @@ export default function Footer() {
             <h4 className="font-semibold mb-3">Contact Info</h4>
             <p className="text-gray-400 font-semibold">Email us</p>
             <p className="text-white text-lg font-semibold">
-              support@indusviva.com
+              <a href="mailto:support@indusviva.com">support@indusviva.com</a>
             </p>
             <p className="text-gray-400 font-semibold">Phone no</p>
-            <p className="text-white text-lg font-semibold">1800 103 4916</p>
+            <p className="text-white text-lg font-semibold">
+              <a href="tel:1800 103 4916">1800 103 4916</a>
+            </p>
           </div>
         </div>
 

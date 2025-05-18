@@ -67,6 +67,13 @@ const appRouter = createBrowserRouter([
         },
       },
       {
+        path: "/careers",
+        lazy: async () => {
+          const module = await import("@/pages/Careers");
+          return { Component: module.default };
+        },
+      },
+      {
         path: "/virtual-office",
         lazy: async () => {
           const module = await import("@/pages/Login");
@@ -136,7 +143,7 @@ const appRouter = createBrowserRouter([
           return { Component: module.default };
         },
       },
-       {
+      {
         path: "/checkout",
         lazy: async () => {
           const module = await import("@/pages/CartCheckout");
