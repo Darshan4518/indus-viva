@@ -6,9 +6,8 @@ import FooterCertificateSlider from "./FooterCertificate";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] text-white py-6 relative z-20">
+    <footer className="bg-[#383232] text-white py-6 relative z-20">
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Divider Title */}
         <div className="flex flex-col sm:flex-row justify-center items-center my-10 gap-4 text-center">
           <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
           <h2 className="text-base sm:text-lg font-medium">
@@ -29,7 +28,6 @@ export default function Footer() {
 
         <FooterCertificateSlider />
 
-        {/* Logo and Social Icons */}
         <div className="flex flex-col sm:flex-row items-center justify-between my-6 gap-4">
           <img src={logo} alt="Logo" className="h-10" />
           <div className="hidden sm:block w-full sm:w-[60%] bg-gray-500/30 h-0.5" />

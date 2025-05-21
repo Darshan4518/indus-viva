@@ -1,32 +1,30 @@
 import NavigationHeroSection from "@/components/NavigationHeroSection";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import dummyMember from "@/assets/img/new/dummy-member-01.jpg";
+import ceo from "@/assets/img/management/Adv-Abhilash-Thomas---CEO.png";
+import director from "@/assets/img/management/Subramanyam-M---Director.png";
+import chairman from "@/assets/img/management/C-A-Anzar---Chairman.png";
+
 const teamMembers = [
   {
     id: 1,
-    name: "Dr. John Smith",
-    position: "Chief Medical Officer",
-    image: dummyMember,
+    name: "Adv Abhilash Thomas",
+    position: "CEO",
+    image: ceo,
   },
   {
     id: 2,
-    name: "Dr. Sarah Johnson",
-    position: "Research Director",
-    image: dummyMember,
+    name: "Subramanyam M",
+    position: " Director",
+    image: director,
   },
   {
     id: 3,
-    name: "Dr. Michael Chen",
-    position: "Product Development",
-    image: dummyMember,
+    name: "C A Anzar",
+    position: "Chairman",
+    image: chairman,
   },
-  {
-    id: 4,
-    name: "Dr. Emily Williams",
-    position: "Quality Assurance",
-    image: dummyMember,
-  },
+
 ];
 
 const MedicalPanel = () => {
@@ -60,16 +58,15 @@ const MedicalPanel = () => {
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-20 max-w-7xl mx-auto "
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-20 max-w-7xl mx-auto"
       >
         {teamMembers.map((member) => (
           <motion.div key={member.id} variants={itemVariants} className="group">
-            {/* Image */}
             <motion.div
               initial={{ width: "10%" }}
               animate={inView ? { width: "100%" } : { width: "10%" }}
               transition={{ duration: 0.8, delay: 0.3 + member.id * 0.1 }}
-              className="relative overflow-hidden rounded-lg bg-gray-100 mb-4"
+              className="relative overflow-hidden rounded-lg bg-gray-100 mb-4 shadow-lg shadow-gray-300"
             >
               <div className="aspect-square">
                 <img
@@ -81,7 +78,6 @@ const MedicalPanel = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                 <div className="p-4 w-full text-white">
                   <div className="flex justify-center gap-4">
-                    {/* Social Icons (as before) */}
                   </div>
                 </div>
               </div>

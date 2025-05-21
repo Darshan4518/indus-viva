@@ -21,7 +21,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-6xl md:text-7xl">
               NURTURING HEALTH <br />
               <div className="mt-2  flex gap-2 items-center">
                 <img src={home3} alt="home" className=" w-20 h-20 " />

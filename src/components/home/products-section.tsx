@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 // @ts-expect-error
 import "swiper/css";
 // @ts-expect-error
@@ -146,8 +146,11 @@ export default function ProductsSection() {
 
         <div className="relative mt-12">
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            speed={800}
+            slidesPerGroup={1}
             slidesPerView={1}
             breakpoints={{
               640: { slidesPerView: 2 },

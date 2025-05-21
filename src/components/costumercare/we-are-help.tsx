@@ -1,6 +1,7 @@
 import { ArrowUpRight, Clock, PhoneCall } from "lucide-react";
 import { Button } from "../ui/button";
 import { Link } from "react-router";
+import cc from "@/assets/img/new/CC.png";
 
 const WeAreHelp = () => {
   return (
@@ -58,7 +59,7 @@ const WeAreHelp = () => {
       </div>
       <div className="block">
         <img
-          src="https://magicads.ae/indus-viva/assets/img/about/about-h-5.jpg"
+          src={cc}
           alt="We Are Help"
           className="w-full h-auto object-cover"
         />
