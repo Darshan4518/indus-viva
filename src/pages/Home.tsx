@@ -10,6 +10,7 @@ import BlogSection from "@/components/home/blog-section";
 import ContactSection from "@/components/home/contact-section";
 import FooterTextSlider from "@/components/FooterTextSlider";
 import CardStackScroll from "@/components/home/card-stack";
+import SustainabilityVerticalSection from "@/components/home/sustainability-section";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <HeroSection />
       <AboutSection />
       <CardStackScroll/>
+      <SustainabilityVerticalSection/>
       <ProductsSection />
       <QualitySection />
       <VideosSection />

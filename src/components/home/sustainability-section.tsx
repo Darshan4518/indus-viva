@@ -60,7 +60,6 @@ export default function SustainabilityVerticalSection() {
       y: (i) => i * 30,
       scale: 0.9,
       opacity: 0.5,
-      filter: "blur(2px)",
       zIndex: (i) => sustainabilityItems.length - i,
       position: "absolute",
       top: 0,
@@ -89,7 +88,6 @@ export default function SustainabilityVerticalSection() {
           y: 0,
           scale: 1,
           opacity: 1,
-          filter: "blur(0px)",
           zIndex: sustainabilityItems.length + 10,
           ease: "power2.out",
           duration: 1,
@@ -115,7 +113,7 @@ export default function SustainabilityVerticalSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#088772] py-10 px-4 sm:px-6 lg:px-8 relative"
+      className="bg-[#088772] py-10 px-4 sm:px-6 lg:px-8 relative md:hidden"
     >
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white">

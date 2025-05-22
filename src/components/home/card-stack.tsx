@@ -1,5 +1,4 @@
-
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Badge } from "../ui/badge";
@@ -38,71 +37,64 @@ const sustainabilityItems = [
 ];
 
 const CardStackScroll = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef(null);
+  const cardRefs = useRef<HTMLDivElement[]>([]);
+  const [containerHeight, setContainerHeight] = useState("100vh");
 
- useEffect(() => {
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  useEffect(() => {
+    const spacingY = window.innerWidth < 640 ? 140 : 180;
 
-  const spacingY = 140;
+    const totalHeight = window.innerHeight + (sustainabilityItems.length - 1) * spacingY;
+    setContainerHeight(`${totalHeight}px`);
 
-  sustainabilityItems.forEach((_, index) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
+    cardRefs.current = cardRefs.current.slice(0, sustainabilityItems.length);
 
-    gsap.set(card, { zIndex: sustainabilityItems.length - index });
-
-    if (index === 0) return;
+    gsap.set(cardRefs.current, {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+    });
 
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: `top+=${index * spacingY} center`,
-      end: `+=${spacingY}`,
-      scrub: true,
-      onEnter: () => {
-        gsap.set(card, {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-        });
-      },
-      onLeaveBack: () => {
-        gsap.set(card, {
-          position: "relative",
-          clearProps: "all",
-        });
-      },
+      start: "top top",
+      end: `${totalHeight}`,
+      pin: true,
+      pinSpacing: true,
+      anticipatePin: 1,
     });
 
-    gsap.fromTo(
-      card,
-      { y: 0 },               
-      {
-        y: index * spacingY,  
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: `top+=${index * spacingY} center`,
-          end: `+=${spacingY}`,
-          scrub: true,
+    cardRefs.current.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          y: index * spacingY,
+          zIndex: 10 + index,
         },
-      }
-    );
-  });
+        {
+          y: 0,
+          zIndex: 20 + index,
+          duration: 1.2,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: `top+=${index * spacingY} center`,
+            end: `+=200`,
+            scrub: true,
+          },
+        }
+      );
+    });
 
-  return () => {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  };
-}, []);
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#088772] p-3 "
-        ref={containerRef}
-    >
-    <div className="text-center mb-10" 
-    
-    >
+    <div className="bg-[#088772]  overflow-hidden md:block hidden p-4">
+      <div className="text-center mt-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white">
           Sustainability Initiatives
         </h2>
@@ -113,42 +105,50 @@ const CardStackScroll = () => {
       </div>
 
       <div
-        className="relative min-h-[140vh] xl:min-h-[100vh] flex items-start justify-center"
+        className="relative "
+        ref={containerRef}
+        style={{ height: containerHeight }}
+
       >
-        <div className="relative w-[90%] max-w-4xl">
+        <div className="relative w-[90%] mx-auto my-20">
           {sustainabilityItems.map((item, index) => (
             <div
               key={item.id}
-              ref={(el:any) => (cardRefs.current[index] = el)}
-              className="w-full bg-white rounded-xl shadow-xl mb-6 p-6 md:p-10 flex flex-col lg:flex-row items-center transition-all duration-500"
+              ref={(el: any) => (cardRefs.current[index] = el!)}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center transition-all duration-500 h-[70vh] mt-30"
             >
-              <div className="lg:w-1/2 space-y-4">
+              {/* Left Content */}
+              <div className="p-6 md:p-10 lg:w-1/2 space-y-4">
                 <div className="flex items-center space-x-4">
                   <div className="h-px w-10 bg-yellow-500"></div>
                   <span className="text-xl font-semibold text-yellow-700">
                     {item.number}
                   </span>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800 md:line-clamp-none line-clamp-4">
+                <h2 className="md:text-2xl text-xl font-bold text-gray-800">
                   {item.title}
                 </h2>
-                <h3 className="text-lg font-medium text-gray-600 md:line-clamp-none line-clamp-4">
+                <h3 className="md:text-lg text-sm font-medium text-gray-600">
                   {item.subtitle}
                 </h3>
-                <p className="text-gray-500 md:line-clamp-none line-clamp-4">{item.description}</p>
+                <p className="text-gray-500">{item.description}</p>
                 <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
                   INDUS VIVA
                 </Badge>
-                <Button variant="link" className="text-blue-600 hover:text-blue-800 mt-2">
+                <Button
+                  variant="link"
+                  className="text-blue-600 hover:text-blue-800 mt-2"
+                >
                   Read More →
                 </Button>
               </div>
 
-              <div className="lg:w-1/2 w-full mt-6 lg:mt-0">
+              {/* Right Image */}
+              <div className="lg:w-1/2 w-full h-full">
                 <img
-                  src={item.image}
+                  src={item.image || "/placeholder.svg"}
                   alt={item.title}
-                  className="w-full h-full object-cover rounded-xl"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
