@@ -41,65 +41,64 @@ const CardStackScroll = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+ useEffect(() => {
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-    const spacingY = 140;
+  const spacingY = 140;
 
-    sustainabilityItems.forEach((_, index) => {
-      const card = cardRefs.current[index];
-      if (!card) return;
+  sustainabilityItems.forEach((_, index) => {
+    const card = cardRefs.current[index];
+    if (!card) return;
 
-      gsap.set(card, { zIndex: sustainabilityItems.length - index });
+    gsap.set(card, { zIndex: sustainabilityItems.length - index });
 
-      if (index === 0) return;
+    if (index === 0) return;
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: `top+=${index * spacingY} center`,
-        end: `+=${spacingY}`,
-        scrub: true,
-        onEnter: () => {
-          gsap.set(card, {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.set(card, {
-            position: "relative",
-            clearProps: "all",
-          });
-        },
-      });
-
-      gsap.fromTo(
-        card,
-        { y: index * spacingY },
-        {
-          y: 0,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: `top+=${index * spacingY} center`,
-            end: `+=${spacingY}`,
-            scrub: true,
-          },
-        }
-      );
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: `top+=${index * spacingY} center`,
+      end: `+=${spacingY}`,
+      scrub: true,
+      onEnter: () => {
+        gsap.set(card, {
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+        });
+      },
+      onLeaveBack: () => {
+        gsap.set(card, {
+          position: "relative",
+          clearProps: "all",
+        });
+      },
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+    gsap.fromTo(
+      card,
+      { y: 0 },               
+      {
+        y: index * spacingY,  
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: `top+=${index * spacingY} center`,
+          end: `+=${spacingY}`,
+          scrub: true,
+        },
+      }
+    );
+  });
+
+  return () => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
+}, []);
 
   return (
     <div className="min-h-screen bg-[#088772] p-3 "
         ref={containerRef}
-
     >
     <div className="text-center mb-10" 
     

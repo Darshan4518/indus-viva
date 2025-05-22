@@ -54,7 +54,7 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="relative z-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-[75%] h-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-[90%] h-20">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
