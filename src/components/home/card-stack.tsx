@@ -38,16 +38,15 @@ const sustainabilityItems = [
 
 const CardStackScroll = () => {
   const containerRef = useRef(null);
-  const cardRefs = useRef<HTMLDivElement[]>([]);
+  const cardRefs = useRef([]);
   const [containerHeight, setContainerHeight] = useState("100vh");
 
   useEffect(() => {
-    const spacingY = window.innerWidth < 640 ? 140 : 180;
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
+    const spacingY = window.innerWidth < 768 ? 120 : 180;
     const totalHeight = window.innerHeight + (sustainabilityItems.length - 1) * spacingY;
     setContainerHeight(`${totalHeight}px`);
-
-    cardRefs.current = cardRefs.current.slice(0, sustainabilityItems.length);
 
     gsap.set(cardRefs.current, {
       position: "absolute",
@@ -56,34 +55,37 @@ const CardStackScroll = () => {
       width: "100%",
     });
 
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top top",
-      end: `${totalHeight}`,
-      pin: true,
-      pinSpacing: true,
-      anticipatePin: 1,
+    gsap.set(cardRefs.current[0], {
+      y: 0,
+      zIndex: 20,
+      opacity: 1,
     });
 
-    cardRefs.current.forEach((card, index) => {
-      gsap.fromTo(
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: `+=${(sustainabilityItems.length - 1) * spacingY + window.innerHeight + 1400}`,
+        pin: true,
+        scrub: true,
+        anticipatePin: 1,
+      },
+    });
+
+    cardRefs.current.slice(1).forEach((card, index) => {
+      tl.fromTo(
         card,
         {
-          y: index * spacingY,
-          zIndex: 10 + index,
+          y: (index + 1) * window.innerHeight * 0.6,
+          zIndex: 40 + index,
         },
         {
           y: 0,
-          zIndex: 20 + index,
-          duration: 1.2,
+          zIndex: 40 + index,
+          duration: 1,
           ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: `top+=${index * spacingY} center`,
-            end: `+=200`,
-            scrub: true,
-          },
-        }
+        },
+        index
       );
     });
 
@@ -93,7 +95,7 @@ const CardStackScroll = () => {
   }, []);
 
   return (
-    <div className="bg-[#088772]  overflow-hidden md:block hidden p-4">
+    <div className="bg-[#088772] overflow-hidden p-4">
       <div className="text-center mt-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white">
           Sustainability Initiatives
@@ -104,20 +106,18 @@ const CardStackScroll = () => {
         </p>
       </div>
 
-      <div
-        className="relative "
-        ref={containerRef}
-        style={{ height: containerHeight }}
-
-      >
-        <div className="relative w-[90%] mx-auto my-20">
+      <div className="relative">
+        <div
+          className="relative w-[90%] mx-auto my-20"
+          ref={containerRef}
+          style={{ height: containerHeight }}
+        >
           {sustainabilityItems.map((item, index) => (
             <div
               key={item.id}
-              ref={(el: any) => (cardRefs.current[index] = el!)}
-              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center transition-all duration-500 h-[70vh] mt-30"
+              ref={(el:never) => (cardRefs.current[index] = el)}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center transition-all duration-500 h-[70vh] md:mt-30 mt-20"
             >
-              {/* Left Content */}
               <div className="p-6 md:p-10 lg:w-1/2 space-y-4">
                 <div className="flex items-center space-x-4">
                   <div className="h-px w-10 bg-yellow-500"></div>
@@ -125,13 +125,13 @@ const CardStackScroll = () => {
                     {item.number}
                   </span>
                 </div>
-                <h2 className="md:text-2xl text-xl font-bold text-gray-800">
+                <h2 className="md:text-2xl text-sm font-bold text-gray-800">
                   {item.title}
                 </h2>
                 <h3 className="md:text-lg text-sm font-medium text-gray-600">
                   {item.subtitle}
                 </h3>
-                <p className="text-gray-500">{item.description}</p>
+                <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">{item.description}</p>
                 <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
                   INDUS VIVA
                 </Badge>
@@ -142,8 +142,6 @@ const CardStackScroll = () => {
                   Read More →
                 </Button>
               </div>
-
-              {/* Right Image */}
               <div className="lg:w-1/2 w-full h-full">
                 <img
                   src={item.image || "/placeholder.svg"}
