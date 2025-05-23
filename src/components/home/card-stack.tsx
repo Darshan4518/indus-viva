@@ -65,7 +65,7 @@ const CardStackScroll = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: `+=${(sustainabilityItems.length - 1) * spacingY + window.innerHeight + 1400}`,
+        end: `+=${(sustainabilityItems.length - 1) * spacingY + window.innerHeight + 2000}`,
         pin: true,
         scrub: true,
         anticipatePin: 1,
@@ -116,7 +116,7 @@ const CardStackScroll = () => {
             <div
               key={item.id}
               ref={(el:never) => (cardRefs.current[index] = el)}
-              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center transition-all duration-500 h-[70vh] md:mt-30 mt-20"
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center transition-all duration-500 md:h-[70vh] h-[80vh] md:mt-30 mt-20"
             >
               <div className="p-6 md:p-10 lg:w-1/2 space-y-4">
                 <div className="flex items-center space-x-4">
