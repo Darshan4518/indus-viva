@@ -37,55 +37,47 @@ const sustainabilityItems = [
 ];
 
 const CardStackScroll = () => {
-  const containerRef = useRef(null);
-  const cardRefs = useRef([]);
-  const [containerHeight, setContainerHeight] = useState("100vh");
+  const triggerRef = useRef(null);
+  const panelsRef = useRef<any>([]);
+  const [_, setActivePanel] = useState(0);
+  const [height, setHeight] = useState("100vh");
 
   useEffect(() => {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
-    const spacingY = window.innerWidth < 768 ? 120 : 180;
-    const totalHeight = window.innerHeight + (sustainabilityItems.length - 1) * spacingY;
-    setContainerHeight(`${totalHeight}px`);
+    const panels = panelsRef.current;
+    const totalPanels = panels.length;
 
-    gsap.set(cardRefs.current, {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-    });
+    setHeight(`${totalPanels * 100}vh`);
 
-    gsap.set(cardRefs.current[0], {
-      y: 0,
-      zIndex: 20,
-      opacity: 1,
-    });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
+    panels.forEach((panel: any, i: number) => {
+      ScrollTrigger.create({
+        trigger: panel,
         start: "top top",
-        end: `+=${(sustainabilityItems.length - 1) * spacingY + window.innerHeight + 2000}`,
+        end: "bottom top",
+        onEnter: () => setActivePanel(i),
+        onEnterBack: () => setActivePanel(i),
         pin: true,
-        scrub: true,
-        anticipatePin: 1,
-      },
-    });
+        pinSpacing: false,
+      });
 
-    cardRefs.current.slice(1).forEach((card, index) => {
-      tl.fromTo(
-        card,
+      gsap.fromTo(
+        panel.querySelector(".panel-content"),
         {
-          y: (index + 1) * window.innerHeight * 0.6,
-          zIndex: 40 + index,
+          y: 20,
+          opacity: 1,
         },
         {
           y: 0,
-          zIndex: 40 + index,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-        index
+          opacity: 1,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: panel,
+            start: "top center",
+          },
+
+          
+        }
       );
     });
 
@@ -95,7 +87,7 @@ const CardStackScroll = () => {
   }, []);
 
   return (
-    <div className="bg-[#088772] overflow-hidden p-4">
+    <div className="bg-[#088772] hide-scrollbar p-4">
       <div className="text-center mt-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white">
           Sustainability Initiatives
@@ -106,19 +98,16 @@ const CardStackScroll = () => {
         </p>
       </div>
 
-      <div className="relative">
-        <div
-          className="relative w-[90%] mx-auto my-20"
-          ref={containerRef}
-          style={{ height: containerHeight }}
-        >
-          {sustainabilityItems.map((item, index) => (
+      <div className="relative" ref={triggerRef} style={{ height }}>
+        <div className="sticky top-0 my-24">
+          <div className=" max-w-[90%] mx-auto">
+            {sustainabilityItems.map((item, index) => (
             <div
               key={item.id}
-              ref={(el:never) => (cardRefs.current[index] = el)}
-              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center transition-all duration-500 md:h-[70vh] h-[80vh] md:mt-30 mt-20"
+              ref={(el: any) => (panelsRef.current[index] = el)}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center  md:h-[70vh] h-[70vh] "
             >
-              <div className="p-6 md:p-10 lg:w-1/2 space-y-4">
+              <div className="p-6 md:p-10 lg:w-1/2 md:space-y-4 space-y-3   panel-content">
                 <div className="flex items-center space-x-4">
                   <div className="h-px w-10 bg-yellow-500"></div>
                   <span className="text-xl font-semibold text-yellow-700">
@@ -131,7 +120,9 @@ const CardStackScroll = () => {
                 <h3 className="md:text-lg text-sm font-medium text-gray-600">
                   {item.subtitle}
                 </h3>
-                <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">{item.description}</p>
+                <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">
+                  {item.description}
+                </p>
                 <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
                   INDUS VIVA
                 </Badge>
@@ -142,7 +133,7 @@ const CardStackScroll = () => {
                   Read More →
                 </Button>
               </div>
-              <div className="lg:w-1/2 w-full h-full">
+              <div className="lg:w-1/2 w-full h-full panel-image">
                 <img
                   src={item.image || "/placeholder.svg"}
                   alt={item.title}
@@ -151,6 +142,7 @@ const CardStackScroll = () => {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </div>
