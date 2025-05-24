@@ -114,10 +114,10 @@ const CardStackScroll = () => {
                     {item.number}
                   </span>
                 </div>
-                <h2 className="md:text-2xl text-sm font-bold text-gray-800">
+                <h2 className="md:text-2xl text-sm font-bold text-gray-800 uppercase">
                   {item.title}
                 </h2>
-                <h3 className="md:text-lg text-sm font-medium text-gray-600">
+                <h3 className="md:text-lg text-sm font-medium text-gray-600 uppercase">
                   {item.subtitle}
                 </h3>
                 <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">
