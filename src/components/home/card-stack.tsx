@@ -53,32 +53,13 @@ const CardStackScroll = () => {
     panels.forEach((panel: any, i: number) => {
       ScrollTrigger.create({
         trigger: panel,
-        start: "top top",
-        end: "bottom top",
+        start: "top top+=80",
+        end: "bottom top+=180",
         onEnter: () => setActivePanel(i),
         onEnterBack: () => setActivePanel(i),
         pin: true,
         pinSpacing: false,
       });
-
-      gsap.fromTo(
-        panel.querySelector(".panel-content"),
-        {
-          y: 20,
-          opacity: 1,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: panel,
-            start: "top center",
-          },
-
-          
-        }
-      );
     });
 
     return () => {
@@ -87,8 +68,10 @@ const CardStackScroll = () => {
   }, []);
 
   return (
-    <div className="bg-[#088772] hide-scrollbar p-4">
-      <div className="text-center mt-10">
+    <div className="bg-[#088772] hide-scrollbar p-4 overflow-hidden" 
+    ref={triggerRef} style={{ height }}
+    >
+      <div className="text-center my-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white">
           Sustainability Initiatives
         </h2>
@@ -98,51 +81,49 @@ const CardStackScroll = () => {
         </p>
       </div>
 
-      <div className="relative" ref={triggerRef} style={{ height }}>
-        <div className="sticky top-0 my-24">
-          <div className=" max-w-[90%] mx-auto">
+      <div className="relative " >
+          <div className=" max-w-[90%] mx-auto my-10">
             {sustainabilityItems.map((item, index) => (
-            <div
-              key={item.id}
-              ref={(el: any) => (panelsRef.current[index] = el)}
-              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center  md:h-[70vh] h-[70vh] "
-            >
-              <div className="p-6 md:p-10 lg:w-1/2 md:space-y-4 space-y-3   panel-content">
-                <div className="flex items-center space-x-4">
-                  <div className="h-px w-10 bg-yellow-500"></div>
-                  <span className="text-xl font-semibold text-yellow-700">
-                    {item.number}
-                  </span>
+              <div
+                key={item.id}
+                ref={(el: any) => (panelsRef.current[index] = el)}
+                className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center  md:h-[70vh] h-[70vh] "
+              >
+                <div className="p-6 md:p-10 lg:w-1/2 md:space-y-4 space-y-3   ">
+                  <div className="flex items-center space-x-4">
+                    <div className="h-px w-10 bg-yellow-500"></div>
+                    <span className="text-xl font-semibold text-yellow-700">
+                      {item.number}
+                    </span>
+                  </div>
+                  <h2 className="md:text-2xl text-sm font-bold text-gray-800 uppercase">
+                    {item.title}
+                  </h2>
+                  <h3 className="md:text-lg text-sm font-medium text-gray-600 uppercase">
+                    {item.subtitle}
+                  </h3>
+                  <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">
+                    {item.description}
+                  </p>
+                  <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
+                    INDUS VIVA
+                  </Badge>
+                  <Button
+                    variant="link"
+                    className="text-blue-600 hover:text-blue-800 mt-2"
+                  >
+                    Read More →
+                  </Button>
                 </div>
-                <h2 className="md:text-2xl text-sm font-bold text-gray-800">
-                  {item.title}
-                </h2>
-                <h3 className="md:text-lg text-sm font-medium text-gray-600">
-                  {item.subtitle}
-                </h3>
-                <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">
-                  {item.description}
-                </p>
-                <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
-                  INDUS VIVA
-                </Badge>
-                <Button
-                  variant="link"
-                  className="text-blue-600 hover:text-blue-800 mt-2"
-                >
-                  Read More →
-                </Button>
+                <div className="lg:w-1/2 w-full h-full panel-image">
+                  <img
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <div className="lg:w-1/2 w-full h-full panel-image">
-                <img
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          ))}
-          </div>
+            ))}
         </div>
       </div>
     </div>

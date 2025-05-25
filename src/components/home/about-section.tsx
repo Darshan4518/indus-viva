@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import bgVideo from "../../assets/img/video/Nature to Home_For Review _LQ.mp4";
+import bgVideo from "../../assets/img/video/videoplayback.mp4";
 
 export default function AboutSection() {
   const [ref, inView] = useInView({

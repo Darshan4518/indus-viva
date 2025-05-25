@@ -16,7 +16,7 @@ const Home = () => {
     <section className=" overflow-hidden">
       <HeroSection />
       <AboutSection />
-      <CardStackScroll/>
+        <CardStackScroll/>
       <ProductsSection />
       <QualitySection />
       <VideosSection />

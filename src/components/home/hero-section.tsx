@@ -5,7 +5,7 @@ import home3 from "@/assets/img/new/home-3-hero.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <section className="relative overflow-hidden h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       <div className="absolute inset-0 z-10">
         <div
           className={`absolute inset-0' bg-cover bg-center opacity-70"`}
@@ -14,7 +14,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/30 to-teal-800/30"></div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-32 my-10">
         <div className="max-w-4xl lg:mx-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
