@@ -122,6 +122,24 @@ const CardStackScroll = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
+                <h2 className="md:text-2xl text-sm font-bold text-gray-800 uppercase">
+                  {item.title}
+                </h2>
+                <h3 className="md:text-lg text-sm font-medium text-gray-600 uppercase">
+                  {item.subtitle}
+                </h3>
+                <p className="text-gray-500 line-clamp-3 md:line-clamp-none text-sm md:text-base">
+                  {item.description}
+                </p>
+                <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
+                  INDUS VIVA
+                </Badge>
+                <Button
+                  variant="link"
+                  className="text-blue-600 hover:text-blue-800 mt-2"
+                >
+                  Read More →
+                </Button>
               </div>
             ))}
         </div>
