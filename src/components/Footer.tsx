@@ -6,7 +6,7 @@ import FooterCertificateSlider from "./FooterCertificate";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#383232] text-white py-6 relative z-20">
+    <footer className="bg-[#e6e6e6] text-black py-6 relative z-20">
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-center items-center my-10 gap-4 text-center">
           <div className="w-full sm:w-[40%] bg-gray-500/40 h-0.5" />
@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-800 py-8 text-sm">
           <div>
             <h4 className="font-semibold mb-3">Main Links</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-gray-900">
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -70,7 +70,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-3">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-gray-900">
               <li>
                 <Link to="/blog">Blog</Link>
               </li>
@@ -98,7 +98,7 @@ export default function Footer() {
           {/* Policies */}
           <div>
             <h4 className="font-semibold mb-3">Policies</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-gray-900">
               <li>
                 <Link
                   to="https://indusviva.com/wp-content/uploads/2025/02/VBO-Contract-C.pdf"
@@ -161,19 +161,19 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="space-y-2">
             <h4 className="font-semibold mb-3">Contact Info</h4>
-            <p className="text-gray-400 font-semibold">Email us</p>
-            <p className="text-white text-lg font-semibold">
+            <p className="text-gray-900 font-semibold">Email us</p>
+            <p className="text-black text-lg font-semibold">
               <a href="mailto:support@indusviva.com">support@indusviva.com</a>
             </p>
-            <p className="text-gray-400 font-semibold">Phone no</p>
-            <p className="text-white text-lg font-semibold">
+            <p className="text-gray-900 font-semibold">Phone no</p>
+            <p className="text-black text-lg font-semibold">
               <a href="tel:1800 103 4916">1800 103 4916</a>
             </p>
           </div>
         </div>
 
         {/* Bottom Legal + Social */}
-        <div className="border-t border-gray-800 text-xs text-gray-400 flex flex-col md:flex-row justify-between items-center gap-2 px-4 py-4">
+        <div className="border-t border-gray-800 text-xs text-gray-900 flex flex-col md:flex-row justify-between items-center gap-2 px-4 py-4">
           <p className="text-center">
             © Copyright 2025 | Powered by{" "}
             <span className="text-green-500">Grace Media</span>
@@ -196,7 +196,7 @@ export default function Footer() {
 
         {/* Scroll to Top Button */}
         <button
-          className="fixed bottom-6 right-6 bg-teal-600 text-white py-2 px-3 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out"
+          className="fixed bottom-6 right-6 bg-teal-600 text-black py-2 px-3 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out"
           aria-label="Scroll to top"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >

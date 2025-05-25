@@ -16,7 +16,7 @@ export default function AboutSection() {
   return (
     <section
       ref={ref}
-      className="relative bg-white py-16 md:py-24 overflow-hidden"
+      className="relative bg-white py-16 md:py-24 overflow-hidden h-screen"
     >
       {/* Background Video */}
       <video

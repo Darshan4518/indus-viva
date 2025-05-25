@@ -14,14 +14,14 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/30 to-teal-800/30"></div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-32 my-10">
+      <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-32 ">
         <div className="max-w-4xl lg:mx-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-3xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               NURTURING HEALTH <br />
               <div className="mt-2  flex gap-2 items-center">
                 <img src={home3} alt="home" className=" w-20 h-20 " />
