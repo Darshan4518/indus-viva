@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 // import lp02 from "@/assets/img/new/lp-02.png";
 // import lp03 from "@/assets/img/new/lp-03.png";
 // import lp04 from "@/assets/img/new/lp-04.png";
-import Amlagex from "@/assets/img/products/amlagex.png";
+import Amlagex from "@/assets/img/products/Amlagex.png";
 import ashwagandha from "@/assets/img/products/ashwagandha.png";
 import Bacolive from "@/assets/img/products/Bacolive.png";
 import Banalife from "@/assets/img/products/Banalife.png";
