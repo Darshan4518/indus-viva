@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ArrowRight } from "lucide-react";
-import icon5 from "@/assets/img/services/icon-05.png";
+import icon1 from "@/assets/img/services/icon-01.png";
 import icon2 from "@/assets/img/services/icon-02.png";
 import icon3 from "@/assets/img/services/icon-03.png";
 import icon4 from "@/assets/img/services/icon-04.png";
+import icon5 from "@/assets/img/services/icon-05.png";
+import icon6 from "@/assets/img/services/icon-06.png";
 
 const values = [
   {
@@ -23,17 +25,29 @@ const values = [
   },
   {
     id: 3,
-    title: "Innovation",
+    title: "Core Values",
     description:
-      "Constantly evolving our products and processes to deliver the best natural health solutions.",
+      "Our core values are the leading light for the organization and its culture.",
     icon: icon3,
   },
   {
     id: 4,
-    title: "Quality",
-    description:
-      "Ensuring the highest standards in every product through rigorous testing and quality control.",
+    title: "Viva Choice",
+    description: "Ancient Ayurvedic principles validated by Modern Science.",
     icon: icon4,
+  },
+  {
+    id: 5,
+    title: "Your Choice",
+    description:
+      "The choice is yours. IndusViva is an invitation to your inevitable success.",
+    icon: icon1,
+  },
+  {
+    id: 5,
+    title: "Career",
+    description: "Perfs so ultrices sollicitudin iaculis platea facilis",
+    icon: icon6,
   },
 ];
 

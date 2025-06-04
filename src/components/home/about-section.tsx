@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import bgVideo from "../../assets/img/video/videoplayback.mp4";
+import bgVideo from "../../assets/img/video/Nature.mp4";
 
 export default function AboutSection() {
   const [ref, inView] = useInView({
@@ -16,7 +16,7 @@ export default function AboutSection() {
   return (
     <section
       ref={ref}
-      className="relative bg-white py-16 md:py-24 overflow-hidden h-screen"
+      className="relative bg-white py-16 md:py-24 overflow-hidden h-screen "
     >
       {/* Background Video */}
       <video
