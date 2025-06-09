@@ -35,7 +35,7 @@ const FooterTextSlider = () => {
       }}
       centeredSlides={false}
       spaceBetween={30}
-      className="w-full bg-[radial-gradient(circle,_#088772_0%,_#5ec199_96%)]  h-[10vh]"
+      className="w-full bg-[radial-gradient(circle,_#088772_0%,_#5ec199_96%)]"
     >
       {texts.map((text, idx) => (
         <SwiperSlide

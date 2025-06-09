@@ -54,8 +54,8 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="relative z-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-[90%] h-20">
-          <div className="flex h-16 items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-[90%] h-20 tv:h-30">
+          <div className="flex h-16 items-center justify-between tv:h-30">
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
@@ -73,7 +73,7 @@ export default function Navbar() {
                       ? "/"
                       : `/${item.toLowerCase().replace(/\s+/g, "-")}`
                   }
-                  className="text-white transition-colors"
+                  className="text-white transition-colors 3xl:text-xl tv:text-4xl"
                 >
                   {item}
                 </Link>

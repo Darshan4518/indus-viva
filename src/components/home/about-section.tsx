@@ -18,7 +18,6 @@ export default function AboutSection() {
       ref={ref}
       className="relative bg-white py-16 md:py-24 overflow-hidden h-screen "
     >
-      {/* Background Video */}
       <video
         autoPlay
         muted
@@ -30,7 +29,6 @@ export default function AboutSection() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Content */}
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -48,19 +46,19 @@ export default function AboutSection() {
           animate={inView ? "visible" : "hidden"}
           variants={variants}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 w-full h-full"
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">
+          <h3 className="text-xs md:text-lg font-bold text-white tv:text-2xl">
             We bring the ancient healing power of Salacia reticulata into the
             modern world.
           </h3>
-          <p className="text-2xl md:text-3xl text-white mb-8 font-bold">
+          <p className="text-xs md:text-lg text-white md:my-8 my-4 font-bold tv:text-2xl">
             First mentioned in the Charaka Samhita around 700 BC, Salacia—also
             known as Ekanayakam or Saptaranga—has been used in Ayurveda for
             centuries to naturally support healthy blood sugar levels and manage
             diabetes.
           </p>
-          <p className="text-2xl md:text-3xl text-white font-bold">
+          <p className="text-xs md:text-lg text-white font-bold tv:text-2xl">
             At IndusViva, we blend this traditional wisdom with modern
             nutraceutical science to create products that honor both heritage
             and health.

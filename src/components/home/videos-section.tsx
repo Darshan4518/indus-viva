@@ -48,7 +48,7 @@ export default function VideosSection() {
               transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
               className="w-full"
             >
-              <div className="w-full aspect-video">
+              <div className="w-full aspect-video h-full">
                 <iframe
                   src={url}
                   title={`YouTube video ${index + 1}`}

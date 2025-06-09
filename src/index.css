@@ -225,6 +225,13 @@ p {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 96rem;
+  --breakpoint-3xl: 110rem;
+  --breakpoint-tv: 200rem;
+} 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -232,8 +239,39 @@ p {
   body {
     @apply bg-background text-foreground;
   }
+
+}
+.parallax-container {
+  width: 100%;
+  min-height: 50vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .parallax-container {
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .parallax-container {
+    background-attachment: scroll;
+    transform: translateZ(0);
+  }
+}
+
+@supports (background-attachment: fixed) {
+  .parallax-container {
+    background-attachment: fixed;
+  }
 }
 
 * {
   box-sizing: border-box;
 }
+
+
