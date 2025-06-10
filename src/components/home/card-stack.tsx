@@ -87,15 +87,17 @@ const CardStackScroll = () => {
                 <p className="text-gray-500 text-sm md:text-base 3xl:text-xl line-clamp-3 md:line-clamp-none">
                   {item.description}
                 </p>
-                <Badge className="bg-yellow-200 text-yellow-800 w-fit mt-2">
-                  INDUS VIVA
-                </Badge>
-                <Button
-                  variant="link"
-                  className="text-blue-600 hover:text-blue-800 mt-2"
-                >
-                  Read More →
-                </Button>
+                <div className="flex gap-3 items-start">
+                  <Badge className="bg-yellow-200 text-yellow-800 ">
+                    INDUS VIVA
+                  </Badge>
+                  <Button
+                    variant="link"
+                    className="text-blue-600 hover:text-blue-800 "
+                  >
+                    Read More →
+                  </Button>
+                </div>
               </div>
 
               {/* Right Side Slider */}
