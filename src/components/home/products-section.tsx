@@ -12,10 +12,6 @@ import "swiper/css/navigation";
 // @ts-expect-error
 import "swiper/css/pagination";
 
-// import lp01 from "@/assets/img/new/lp-01.png";
-// import lp02 from "@/assets/img/new/lp-02.png";
-// import lp03 from "@/assets/img/new/lp-03.png";
-// import lp04 from "@/assets/img/new/lp-04.png";
 import Amlagex from "@/assets/img/products/Amlagex.png";
 import ashwagandha from "@/assets/img/products/ashwagandha.png";
 import Bacolive from "@/assets/img/products/Bacolive.png";
@@ -37,51 +33,7 @@ import Zinberin from "@/assets/img/products/Zinberin.png";
 
 import ProductCard from "./product-card";
 
-// interface Product {
-//   id: number;
-//   name: string;
-//   category: string;
-//   image: string;
-//   color: string;
-// }
 
-// const products: Product[] = [
-//   {
-//     id: 1,
-//     name: "iPulse",
-//     category: "Immune Booster",
-//     image: lp01,
-//     color: "bg-amber-50",
-//   },
-//   {
-//     id: 2,
-//     name: "iCoffee",
-//     category: "Diabetic Support",
-//     image: lp02,
-//     color: "bg-blue-50",
-//   },
-//   {
-//     id: 3,
-//     name: "iGlow",
-//     category: "Skin Health",
-//     image: lp03,
-//     color: "bg-pink-50",
-//   },
-//   {
-//     id: 4,
-//     name: "iCare",
-//     category: "Women Health",
-//     image: lp04,
-//     color: "bg-green-50",
-//   },
-//   {
-//     id: 5,
-//     name: "iCare",
-//     category: "Women Health",
-//     image: lp04,
-//     color: "bg-green-50",
-//   },
-// ];
 
 interface Product {
   id: number;
