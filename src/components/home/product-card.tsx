@@ -18,7 +18,7 @@ function ProductCard({ img, name }: { img: any; name: string }) {
         />
       </div>
       <motion.h3
-        className="text-xl font-semibold text-center text-gray-800 py-4 group-hover:text-primary transition-colors duration-300"
+        className="text-xl font-semibold text-center text-gray-800 py-4 group-hover:text-primary transition-colors duration-300 line-clamp-1"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
