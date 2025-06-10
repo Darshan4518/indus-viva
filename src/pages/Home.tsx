@@ -13,7 +13,7 @@ import CardStackScroll from "@/components/home/card-stack";
 
 const Home = () => {
   return (
-    <section className=" overflow-hidden">
+    <section className="">
       <HeroSection />
       <AboutSection />
       <CardStackScroll />

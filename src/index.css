@@ -230,7 +230,7 @@ p {
   --breakpoint-2xl: 96rem;
   --breakpoint-3xl: 110rem;
   --breakpoint-tv: 200rem;
-} 
+}
 
 @layer base {
   * {
@@ -239,7 +239,6 @@ p {
   body {
     @apply bg-background text-foreground;
   }
-
 }
 .parallax-container {
   width: 100%;
@@ -273,5 +272,4 @@ p {
 * {
   box-sizing: border-box;
 }
-
 

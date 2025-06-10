@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Navbar from "@/components/navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function Layout() {
   return (
     <main className="">
+      <ScrollToTop />
       <Navbar />
       <Outlet />
       <Footer />
@@ -169,5 +171,6 @@ const appRouter = createBrowserRouter([
 ]);
 
 export default function App() {
+ 
   return <RouterProvider router={appRouter} />;
 }
