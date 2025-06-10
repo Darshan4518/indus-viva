@@ -8,6 +8,13 @@ import { Autoplay } from "swiper/modules";
 import image1 from "@/assets/img/1.png";
 import image2 from "@/assets/img/2.png";
 import image3 from "@/assets/img/3.png";
+import image4 from "@/assets/img/4.png";
+import image5 from "@/assets/img/5.png";
+import image6 from "@/assets/img/6.png";
+import image7 from "@/assets/img/7.png";
+import image8 from "@/assets/img/8.png";
+import image9 from "@/assets/img/9.png";
+
 
 const sustainabilityItems = [
   {
@@ -26,7 +33,7 @@ const sustainabilityItems = [
     subtitle: "ADVANCED EXTRACTION PRESERVES POTENCY",
     description:
       "Our state-of-the-art extraction methods ensure maximum retention of the plant's beneficial compounds, delivering superior efficacy in every product.",
-    images: [image2, image1, image3],
+    images: [image4, image5, image6],
   },
   {
     id: 3,
@@ -35,7 +42,7 @@ const sustainabilityItems = [
     subtitle: "Salacia roots travel to our state-of-the-art facility",
     description:
       "Salacia roots travel to our state-of-the-art facility, where advanced extraction methods preserve their potency. With a dedicated team ensuring strict quality control, each product undergoes thorough testing for purity and safety.",
-    images: [image3, image2, image1],
+    images: [image7, image8, image9],
   },
 ];
 
