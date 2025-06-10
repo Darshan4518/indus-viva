@@ -162,7 +162,7 @@ export default function Footer() {
           <div className="space-y-2">
             <h4 className="font-semibold mb-3">Contact Info</h4>
             <p className="text-gray-900 font-semibold">Email us</p>
-            <p className="text-black text-lg font-semibold">
+            <p className="text-black text-lg font-semibold wrap-break-word">
               <a href="mailto:support@indusviva.com">support@indusviva.com</a>
             </p>
             <p className="text-gray-900 font-semibold">Phone no</p>
