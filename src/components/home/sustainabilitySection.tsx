@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Swiper, SwiperSlide } from "swiper/react";
 // @ts-expect-error
@@ -58,7 +57,7 @@ const SustainabilitySection = () => {
       </div>
 
       <div className="relative p-3">
-        {sustainabilityItems.map((item, index) => (
+        {sustainabilityItems.map((item, _) => (
           <div key={item.id} className=" px-4 pb-8">
             <div className="bg-white rounded-xl overflow-hidden flex flex-col lg:flex-row items-center h-[80vh] md:min-h-[70vh] md:max-w-[90%] mx-auto md:p-6 p-2 w-full shadow-md ">
               {/* Left Side Content */}
