@@ -23,9 +23,9 @@ export default function AboutSection() {
             animate={inView ? "visible" : "hidden"}
             variants={variants}
             transition={{ duration: 0.6 }}
-            className="md:w-[35%] w-full flex flex-col justify-center h-full"
+            className="md:w-[30%] w-full flex flex-col justify-center h-full"
           >
-            <h2 className="text-2xl font-bold text-gray-800 text-center">
+            <h2 className="text-2xl font-bold text-gray-800 ml-[5%]">
               ABOUT OUR COMPANY
             </h2>
 
@@ -54,7 +54,7 @@ export default function AboutSection() {
             animate={inView ? "visible" : "hidden"}
             variants={variants}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:w-[65%] w-full h-full flex items-center justify-center"
+            className="md:w-[70%] w-full h-full flex items-center justify-center"
           >
             <video
               autoPlay

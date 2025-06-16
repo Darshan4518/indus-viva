@@ -63,8 +63,8 @@ const SustainabilitySection = () => {
               {/* Left Side Content */}
               <div className="p-6 md:p-10 lg:w-1/2 space-y-2 md:space-y-4 md:h-full flex flex-col justify-center h-1/2">
                 <div className="flex items-center space-x-4">
-                  <div className="h-px w-10 bg-yellow-500"></div>
-                  <span className="text-xl 3xl:text-4xl font-semibold text-yellow-700">
+                  <div className="h-px w-10 bg-black"></div>
+                  <span className="text-xl 3xl:text-4xl font-semibold text-black">
                     {item.number}
                   </span>
                 </div>
