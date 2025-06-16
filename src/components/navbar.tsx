@@ -104,7 +104,7 @@ export default function Navbar() {
                   </div>
 
                   {/* Navigation */}
-                  <nav className="space-y-4 md:hidden">
+                  <nav className="space-y-4 xl:hidden">
                     {navItems.map((item) => (
                       <SheetClose asChild key={item}>
                         <Link
