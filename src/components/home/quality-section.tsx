@@ -14,7 +14,6 @@ export default function QualitySection() {
     <Parallax bgImage={ctabg} strength={350}>
       <section className="relative py-24 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-t from-teal-700/75 to-teal-700 bg-cover bg-no-repeat z-0"></div>
-
         <div
           ref={ref}
           className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center"

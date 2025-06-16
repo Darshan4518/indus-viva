@@ -14,8 +14,8 @@ export default function AboutSection() {
   };
 
   return (
-    <section ref={ref} className="relative bg-white h-[80vh] overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+    <section ref={ref} className="relative bg-white h-[90vh] overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-4 lg:px-6 h-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12 h-full">
           {/* Text Content */}
           <motion.div
@@ -23,7 +23,7 @@ export default function AboutSection() {
             animate={inView ? "visible" : "hidden"}
             variants={variants}
             transition={{ duration: 0.6 }}
-            className="md:w-[30%] w-full flex flex-col justify-center h-full"
+            className="md:w-[35%] w-full flex flex-col justify-center h-full"
           >
             <h2 className="text-2xl font-bold text-gray-800 ml-[5%]">
               ABOUT OUR COMPANY
@@ -54,14 +54,14 @@ export default function AboutSection() {
             animate={inView ? "visible" : "hidden"}
             variants={variants}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:w-[70%] w-full h-full flex items-center justify-center"
+            className="md:w-[65%] w-full h-full flex items-center justify-center"
           >
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="h-full w-full object-cover rounded-xl shadow-lg"
+              className="h-full w-full object-contain "
             >
               <source src={bgVideo} type="video/mp4" />
               Your browser does not support the video tag.
