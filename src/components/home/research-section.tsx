@@ -33,19 +33,22 @@ export default function ResearchSection() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <div className="flex justify-center">
-                  <Button className="bg-teal-600 hover:bg-teal-700 text-white py-3 px-5 sm:py-4 sm:px-6 rounded-none text-sm sm:text-base flex items-center gap-2">
+                  <Button
+                    size="lg"
+                    className="bg-teal-600 hover:bg-teal-700 text-white px-10 py-4 3xl:px-16 3xl:py-6 tv:px-20 tv:py-12 flex items-center justify-center gap-2 3xl:text-xl tv:text-2xl"
+                  >
                     Read More
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="24"
+                      height="24"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="h-5 w-5 -rotate-45"
+                      className=" h-10 w-10 -rotate-45"
                     >
                       <path d="M5 12h14" />
                       <path d="m12 5 7 7-7 7" />

@@ -51,7 +51,7 @@ export default function HeroSection() {
           >
             <Button
               size="lg"
-              className="bg-teal-600 hover:bg-teal-700 text-white px-12 py-8 3xl:px-16 3xl:py-10 tv:px-20 tv:py-12 flex items-center justify-center gap-4 3xl:text-2xl tv:text-3xl"
+              className="bg-teal-600 hover:bg-teal-700 text-white px-12 py-6 3xl:px-16 3xl:py-8 tv:px-20 tv:py-12 flex items-center justify-center gap-4 3xl:text-xl tv:text-2xl"
             >
               Discover More
               <svg

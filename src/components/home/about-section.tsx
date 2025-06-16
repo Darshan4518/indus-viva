@@ -14,56 +14,60 @@ export default function AboutSection() {
   };
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-white py-16 md:py-24 overflow-hidden h-screen "
-    >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src={bgVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <section ref={ref} className="relative bg-white h-[80vh] overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 h-full">
+          {/* Text Content */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={variants}
+            transition={{ duration: 0.6 }}
+            className="md:w-[35%] w-full flex flex-col justify-center h-full"
+          >
+            <h2 className="text-2xl font-bold text-gray-800 text-center">
+              ABOUT OUR COMPANY
+            </h2>
 
-      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={variants}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 flex w-full justify-center items-center gap-2"
-        >
-          <span className="inline-block h-2 w-2 rounded-full bg-red-600"></span>
-          <h2 className="text-sm font-medium text-white">ABOUT OUR COMPANY</h2>
-        </motion.div>
+            <h3 className="text-lg md:text-xl font-semibold text-gray-700 my-4">
+              We bring the ancient healing power of Salacia reticulata into the
+              modern world.
+            </h3>
 
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={variants}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 w-full h-full"
-        >
-          <h3 className="text-xs md:text-lg font-bold text-white tv:text-2xl">
-            We bring the ancient healing power of Salacia reticulata into the
-            modern world.
-          </h3>
-          <p className="text-xs md:text-lg text-white md:my-8 my-4 font-bold tv:text-2xl">
-            First mentioned in the Charaka Samhita around 700 BC, Salacia—also
-            known as Ekanayakam or Saptaranga—has been used in Ayurveda for
-            centuries to naturally support healthy blood sugar levels and manage
-            diabetes.
-          </p>
-          <p className="text-xs md:text-lg text-white font-bold tv:text-2xl">
-            At IndusViva, we blend this traditional wisdom with modern
-            nutraceutical science to create products that honor both heritage
-            and health.
-          </p>
-        </motion.div>
+            <p className="text-sm md:text-base text-gray-600 mb-4">
+              First mentioned in the Charaka Samhita around 700 BC, Salacia—also
+              known as Ekanayakam or Saptaranga—has been used in Ayurveda for
+              centuries to naturally support healthy blood sugar levels and
+              manage diabetes.
+            </p>
+
+            <p className="text-sm md:text-base text-gray-600">
+              At IndusViva, we blend this traditional wisdom with modern
+              nutraceutical science to create products that honor both heritage
+              and health.
+            </p>
+          </motion.div>
+
+          {/* Video Content */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={variants}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="md:w-[65%] w-full h-full flex items-center justify-center"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-cover rounded-xl shadow-lg"
+            >
+              <source src={bgVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

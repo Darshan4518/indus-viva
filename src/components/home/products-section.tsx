@@ -44,7 +44,7 @@ export default function ProductsSection() {
       className="py-16 md:py-24 bg-white overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 flex items-center justify-between max-w-[90%] mx-auto">
+        <div className="mb-12 flex items-center justify-between ">
           <div>
             <motion.div
               initial="hidden"
@@ -125,7 +125,7 @@ export default function ProductsSection() {
           >
             {products.map((product) => (
               <SwiperSlide key={product?.id}>
-                <Link to={`/product/${product?.id}`} state={product} >
+                <Link to={`/ingredients/${product?.id}`} state={product} >
                   <ProductCard img={product?.images[0]} name={product?.title} />
                 </Link>
               </SwiperSlide>

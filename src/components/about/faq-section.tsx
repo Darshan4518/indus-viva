@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import aboutImage from "@/assets/img/aboutimage.jpg" 
 
 const faqs = [
   {
@@ -112,7 +113,7 @@ export default function FaqSection() {
             className="hidden lg:block"
           >
             <div className="bg-gray-200 rounded-lg aspect-square flex items-center justify-center text-gray-800 text-7xl font-bold">
-              875X630
+             <img src={aboutImage} alt="aboytimage" className="w-full h-full object-cover" />
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // @ts-expect-error
 import "swiper/css";
@@ -14,7 +13,6 @@ import image6 from "@/assets/img/6.png";
 import image7 from "@/assets/img/7.png";
 import image8 from "@/assets/img/8.png";
 import image9 from "@/assets/img/9.png";
-
 
 const sustainabilityItems = [
   {
@@ -46,9 +44,7 @@ const sustainabilityItems = [
   },
 ];
 
-const CardStackScroll = () => {
-  const targetRef = useRef(null);
-
+const SustainabilitySection = () => {
   return (
     <div className="bg-[#088772] min-h-screen">
       <div className="text-center py-20 px-4">
@@ -61,22 +57,10 @@ const CardStackScroll = () => {
         </p>
       </div>
 
-      <div ref={targetRef} className="relative">
+      <div className="relative p-3">
         {sustainabilityItems.map((item, index) => (
-          <div
-            key={item.id}
-            className="sticky px-4 pb-8 overflow-hidden"
-            style={{
-              top: `${15 + index * 2.5}vh`,
-              zIndex: sustainabilityItems.length + index,
-            }}
-          >
-            <div
-              className="bg-white rounded-xl overflow-hidden flex flex-col lg:flex-row items-center h-[80vh] md:min-h-[70vh] md:max-w-[90%] mx-auto md:p-6 p-2 w-full shadow-md"
-              style={{
-                transform: `translateY(${index}px)`,
-              }}
-            >
+          <div key={item.id} className=" px-4 pb-8">
+            <div className="bg-white rounded-xl overflow-hidden flex flex-col lg:flex-row items-center h-[80vh] md:min-h-[70vh] md:max-w-[90%] mx-auto md:p-6 p-2 w-full shadow-md ">
               {/* Left Side Content */}
               <div className="p-6 md:p-10 lg:w-1/2 space-y-2 md:space-y-4 md:h-full flex flex-col justify-center h-1/2">
                 <div className="flex items-center space-x-4">
@@ -95,14 +79,26 @@ const CardStackScroll = () => {
                   {item.description}
                 </p>
                 <div className="flex gap-3 items-start">
-                  <Badge className="bg-yellow-200 text-yellow-800 ">
-                    INDUS VIVA
-                  </Badge>
                   <Button
-                    variant="link"
-                    className="text-blue-600 hover:text-blue-800 "
+                    size="lg"
+                    className="bg-teal-600 hover:bg-teal-700 text-white px-10 py-4 3xl:px-16 3xl:py-6 tv:px-20 tv:py-12 flex items-center justify-center gap-2 3xl:text-xl tv:text-2xl"
                   >
-                    Read More →
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className=" h-10 w-10 -rotate-45"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
                   </Button>
                 </div>
               </div>
@@ -133,10 +129,9 @@ const CardStackScroll = () => {
             </div>
           </div>
         ))}
-        <div className="min-h-[10vh]" />
       </div>
     </div>
   );
 };
 
-export default CardStackScroll;
+export default SustainabilitySection;

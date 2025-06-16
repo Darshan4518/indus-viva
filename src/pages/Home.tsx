@@ -9,14 +9,14 @@ import TestimonialsSection from "@/components/home/testimonials-section";
 import BlogSection from "@/components/home/blog-section";
 import ContactSection from "@/components/home/contact-section";
 import FooterTextSlider from "@/components/FooterTextSlider";
-import CardStackScroll from "@/components/home/card-stack";
+import SustainabilitySection from "@/components/home/sustainabilitySection";
 
 const Home = () => {
   return (
     <section className="">
       <HeroSection />
       <AboutSection />
-      <CardStackScroll />
+      <SustainabilitySection />
       <ProductsSection />
       <QualitySection />
       <VideosSection />

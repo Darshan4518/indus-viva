@@ -160,9 +160,16 @@ const appRouter = createBrowserRouter([
         },
       },
       {
-        path: "/product/:id",
+        path: "/ingredients/:id",
         lazy: async () => {
           const module = await import("@/pages/ingrediants-product-details");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "/our-products/product/:id",
+        lazy: async () => {
+          const module = await import("@/pages/ProductDetails");
           return { Component: module.default };
         },
       },
@@ -178,6 +185,5 @@ const appRouter = createBrowserRouter([
 ]);
 
 export default function App() {
- 
   return <RouterProvider router={appRouter} />;
 }

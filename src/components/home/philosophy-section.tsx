@@ -73,9 +73,27 @@ export default function PhilosophySection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 pt-4"
             >
-              <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 text-sm rounded-none w-full sm:w-auto">
-                Read More
-              </Button>
+              <Button
+                    size="lg"
+                    className="bg-teal-600 hover:bg-teal-700 text-white px-10 py-4 3xl:px-16 3xl:py-6 tv:px-20 tv:py-12 flex items-center justify-center gap-2 3xl:text-xl tv:text-2xl"
+                  >
+                    Read More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className=" h-10 w-10 -rotate-45"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </Button>
 
               <div className="flex items-center space-x-3">
                 <div className="p-4 rounded-full border border-black flex items-center justify-center">

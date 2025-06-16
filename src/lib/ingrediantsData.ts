@@ -14,6 +14,8 @@ import Zinberin from "@/assets/img/products/Zinberin.png";
 import sesavita from "@/assets/img/products/Sesavita.png";
 import Nufotrim from "@/assets/img/products/Nufotrim.png";
 import Mucuna from "@/assets/img/products/Velvet-Bean.png";
+import BerberineHydrochloride from "@/assets/img/products/Berberine-Hydrochloride.png";
+
 
 export interface IProducts {
   id: number;
@@ -292,7 +294,7 @@ export const products: IProducts[] = [
     subtitle:
       "Natural metabolic and cardiovascular support powered by Berberis aristata.",
     badge: "Natural Source | 97% Purity | Solvent-Free",
-    images: [],
+    images: [BerberineHydrochloride],
 
     description:
       "Berberine Hydrochloride is renowned for its remarkable ability to support metabolic wellness, including effective blood sugar regulation and enhanced insulin sensitivity. Its powerful antimicrobial and anti-inflammatory properties make it an excellent choice for combating infections and reducing inflammation. Additionally, Berberine promotes cardiovascular health by balancing cholesterol levels and supporting healthy blood pressure. Experience the transformative benefits of this exceptional supplement.",

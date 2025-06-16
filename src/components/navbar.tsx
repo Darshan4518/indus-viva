@@ -59,7 +59,7 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <img src={logo} alt="logo" className="w-35 h-35" />
+                <img src={logo} alt="logo" className="md:w-40 md:h-40 w-30 h-30" />
               </Link>
             </div>
 
