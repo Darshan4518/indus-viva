@@ -103,6 +103,7 @@ export default function ProductsSection() {
             spaceBetween={20}
             autoplay={{ delay: 1000, disableOnInteraction: false }}
             speed={800}
+            loop={true}
             slidesPerGroup={1}
             slidesPerView={1}
             breakpoints={{
@@ -125,7 +126,7 @@ export default function ProductsSection() {
           >
             {products.map((product) => (
               <SwiperSlide key={product?.id}>
-                <Link to={`/ingredients/${product?.id}`} state={product} >
+                <Link to={`/ingredients/${product?.id}`} state={product}>
                   <ProductCard img={product?.images[0]} name={product?.title} />
                 </Link>
               </SwiperSlide>
