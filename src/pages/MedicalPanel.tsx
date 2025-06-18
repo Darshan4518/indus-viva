@@ -1,30 +1,25 @@
 import NavigationHeroSection from "@/components/NavigationHeroSection";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ceo from "@/assets/img/management/Adv-Abhilash-Thomas---CEO.png";
-import director from "@/assets/img/management/Subramanyam-M---Director.png";
-import chairman from "@/assets/img/management/C-A-Anzar---Chairman.png";
+
+import dummymember from "@/assets/img/new/dummy-member-01.jpg";
 
 const teamMembers = [
   {
     id: 1,
-    name: "Adv Abhilash Thomas",
-    position: "CEO",
-    image: ceo,
+    name: "XXX",
+    image: dummymember,
   },
   {
     id: 2,
-    name: "Subramanyam M",
-    position: " Director",
-    image: director,
+    name: "XXX",
+    image: dummymember,
   },
   {
-    id: 3,
-    name: "C A Anzar",
-    position: "Chairman",
-    image: chairman,
+    id: 2,
+    name: "XXX",
+    image: dummymember,
   },
-
 ];
 
 const MedicalPanel = () => {
@@ -77,13 +72,11 @@ const MedicalPanel = () => {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                 <div className="p-4 w-full text-white">
-                  <div className="flex justify-center gap-4">
-                  </div>
+                  <div className="flex justify-center gap-4"></div>
                 </div>
               </div>
             </motion.div>
             <h3 className="text-xl font-bold text-center">{member.name}</h3>
-            <p className="text-gray-500 text-center">{member.position}</p>
           </motion.div>
         ))}
       </motion.div>
