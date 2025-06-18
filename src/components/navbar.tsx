@@ -15,6 +15,7 @@ import logoblack from "@/assets/img/new/logo-black.png";
 import CartSheet from "./cart/CartSheet";
 import VerificationDialog from "./VerificationDailog";
 
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 

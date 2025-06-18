@@ -6,34 +6,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useCartStore } from "@/stores/useCartStore";
 import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router";
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-};
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: "ICare - Women health",
-    price: 2997.5,
-    image: "https://magicads.ae/indus-viva/assets/img/new/icare-cart.png",
-  },
-  {
-    id: 2,
-    name: "ICoffee - Black",
-    price: 2997.5,
-    image: "https://magicads.ae/indus-viva/assets/img/new/icoffee-black.png",
-  },
-];
-
 const CartSheet = () => {
+  const { items } = useCartStore();
   const navigate = useNavigate();
-  const total = products.reduce((acc, product) => acc + product.price, 0);
+  const total = items.reduce((acc, product) => acc + product.price, 0);
 
   return (
     <Sheet>
@@ -41,7 +21,7 @@ const CartSheet = () => {
         <div className="relative">
           <ShoppingCart className="h-6 w-6" color="white" fill="white" />
           <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
-            3
+            {items?.length}
           </span>
         </div>
       </SheetTrigger>
@@ -53,7 +33,7 @@ const CartSheet = () => {
               <div className=" relative">
                 <ShoppingCart className="h-7 w-7" fill="black" />
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
-                  3
+                  {items?.length}
                 </span>
               </div>
             </div>
@@ -61,14 +41,14 @@ const CartSheet = () => {
           <SheetDescription>
             <div className="p-3">
               <ul className="divide-y divide-gray-300">
-                {products.map((product) => (
+                {items.map((product) => (
                   <li
                     key={product.id}
                     className="flex items-center justify-between py-4"
                   >
                     <div className="flex items-center space-x-4">
                       <img
-                        src={product.image}
+                        src={product.img}
                         alt={product.name}
                         className="w-12 h-16 object-contain"
                       />

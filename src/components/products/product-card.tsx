@@ -8,9 +8,10 @@ interface ProductCardProps {
   name: string;
   img: string;
   price: number;
+  pv:number;
 }
 
-function ProductCard({ id, name, img, price }: ProductCardProps) {
+function ProductCard({ id, name, img, price,pv }: ProductCardProps) {
   return (
     <motion.div
       className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
@@ -63,7 +64,7 @@ function ProductCard({ id, name, img, price }: ProductCardProps) {
         <Link
           to={`product/${id}`}
           state={{
-            product: { name, img, price },
+            product: { name, img, price,id,pv },
           }}
         >
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>

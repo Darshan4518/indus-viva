@@ -11,8 +11,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-
 import { useLocation } from "react-router";
+import { useCartStore } from "@/stores/useCartStore";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -29,9 +29,8 @@ const fadeIn = {
 
 export default function ProductDetailsPage() {
   const location = useLocation();
+  const { addToCart } = useCartStore();
   const product = location?.state?.product;
-
-  console.log(product);
 
   const [mainImage, setMainImage] = useState(product?.img);
   const [quantity, setQuantity] = useState("1");
@@ -206,13 +205,18 @@ export default function ProductDetailsPage() {
               className="space-y-3"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg">
+                <Button
+                  className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg"
+                  onClick={() => {
+                    addToCart(product, parseInt(quantity));
+                  }}
+                >
                   Add to Cart
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="w-full border-green-600 text-green-600 hover:bg-green-50 py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg"
+                  className="w-full cursor-pointer border-green-600 text-green-600 hover:bg-green-50 py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg"
                 >
                   Buy Now
                 </Button>

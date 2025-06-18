@@ -5,26 +5,24 @@ import director from "@/assets/img/management/Subramanyam-M---Director.png";
 import chairman from "@/assets/img/management/C-A-Anzar---Chairman.png";
 
 const teamMembers = [
-   {
+  {
     id: 1,
     name: "C A Anzar",
     position: "Chairman",
     image: chairman,
   },
-   {
-    id: 2,
-    name: "Subramanyam M",
-    position: " Director",
-    image: director,
-  },
   {
-    id: 3,
+    id: 2,
     name: "Adv Abhilash Thomas",
     position: "CEO",
     image: ceo,
   },
- 
- 
+  {
+    id: 3,
+    name: "Subramanyam M",
+    position: " Director",
+    image: director,
+  },
 ];
 export default function TeamSection() {
   const [ref, inView] = useInView({

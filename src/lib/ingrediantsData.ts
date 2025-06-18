@@ -212,7 +212,7 @@ export const products: IProducts[] = [
     ],
   },
   {
-    id: 10,
+    id: 11,
     title: "Chlorobean™ – Green Coffee Bean Extract",
     subtitle:
       "Harness the antioxidant power of chlorogenic acids for metabolism and stress support.",
@@ -229,7 +229,7 @@ export const products: IProducts[] = [
     ],
   },
   {
-    id: 11,
+    id: 12,
     title: "Amlagex™ – Amla Extract",
     subtitle:
       "India's ancient superfruit, standardized for Vitamin C, supporting immunity, skin, digestion, and organ function.",
@@ -250,7 +250,7 @@ export const products: IProducts[] = [
     ],
   },
   {
-    id: 12,
+    id: 13,
     title: "Zinberin™ – Ginger Extract",
     subtitle:
       "Timeless digestive and immune support with pure, potent ginger extract.",
@@ -271,7 +271,7 @@ export const products: IProducts[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Amlagex.png",
   },
   {
-    id: 13,
+    id: 14,
     title: "Rosegex™ – Rosemary Extract",
     subtitle:
       "Brain support, sports recovery, and meat preservation from nature’s antioxidant.",
@@ -289,7 +289,7 @@ export const products: IProducts[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Amlagex.png",
   },
   {
-    id: 14,
+    id: 15,
     title: "Alphaberin™ – Berberine Hydrochloride",
     subtitle:
       "Natural metabolic and cardiovascular support powered by Berberis aristata.",
@@ -306,7 +306,7 @@ export const products: IProducts[] = [
     aboutImage: "",
   },
   {
-    id: 15,
+    id: 16,
     title: "BelaFort™ – Terminalia bellirica Extract",
     subtitle:
       "Supports digestion, liver health, and immunity with potent polyphenols.",
@@ -323,7 +323,7 @@ export const products: IProducts[] = [
     ],
   },
   {
-    id: 16,
+    id: 17,
     title: "Mucuna Extract",
     subtitle:
       "Traditional adaptogenic support for brain, nerves, and vitality from velvet bean.",

@@ -1,25 +1,27 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { motion, AnimatePresence } from "framer-motion"
-import { RefreshCw, AlertCircle } from "lucide-react"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { motion, AnimatePresence } from "framer-motion";
+import { RefreshCw, AlertCircle } from "lucide-react";
 
-import NavigationHeroSection from "@/components/NavigationHeroSection"
-import ProductCard from "@/components/products/product-card"
-import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import NavigationHeroSection from "@/components/NavigationHeroSection";
+import ProductCard from "@/components/products/product-card";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface ApiProduct {
-  id: number
-  product_name: string
-  thumbnail_url: string
-  selling_price: number
+  id: number;
+  product_name: string;
+  thumbnail_url: string;
+  selling_price: number;
+  pv:number;
 }
 
 interface Product {
-  id: number
-  name: string
-  img: string
-  price: number
+  id: number;
+  name: string;
+  img: string;
+  price: number;
+  pv: number;
 }
 
 function ProductCardSkeleton() {
@@ -45,54 +47,58 @@ function ProductCardSkeleton() {
         <div className="h-12 bg-gray-200 rounded-2xl animate-pulse" />
       </div>
     </div>
-  )
+  );
 }
 
 export default function ProductSection() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
-  const [retrying, setRetrying] = useState<boolean>(false)
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [retrying, setRetrying] = useState<boolean>(false);
 
   const transformApiProduct = (apiProduct: ApiProduct): Product => ({
     id: apiProduct.id,
     name: apiProduct.product_name,
     img: apiProduct.thumbnail_url,
     price: apiProduct.selling_price,
-  })
+    pv: apiProduct.pv,
+  });
 
   const fetchProducts = async (isRetry = false) => {
     try {
       if (isRetry) {
-        setRetrying(true)
-        setError(null)
+        setRetrying(true);
+        setError(null);
       } else {
-        setLoading(true)
+        setLoading(true);
       }
 
       const response = await axios.get<{ data: ApiProduct[] }>(
-        "https://uat-api.machinesarehere.com/sales/v1/website/products",
-      )
+        "https://uat-api.machinesarehere.com/sales/v1/website/products"
+      );
 
-      const transformedProducts = response.data.data.map(transformApiProduct)
-      setProducts(transformedProducts)
-      setError(null)
+      const transformedProducts = response.data.data.map(transformApiProduct);
+      setProducts(transformedProducts);
+      setError(null);
     } catch (err: any) {
-      console.error("Failed to fetch products:", err)
-      setError(err.response?.data?.message || "Failed to fetch products. Please check your connection and try again.")
+      console.error("Failed to fetch products:", err);
+      setError(
+        err.response?.data?.message ||
+          "Failed to fetch products. Please check your connection and try again."
+      );
     } finally {
-      setLoading(false)
-      setRetrying(false)
+      setLoading(false);
+      setRetrying(false);
     }
-  }
+  };
 
   const handleRetry = () => {
-    fetchProducts(true)
-  }
+    fetchProducts(true);
+  };
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   // Container animation variants
   const containerVariants = {
@@ -104,7 +110,7 @@ export default function ProductSection() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   // Item animation variants
   const itemVariants = {
@@ -117,7 +123,7 @@ export default function ProductSection() {
         ease: "easeOut",
       },
     },
-  }
+  };
 
   return (
     <section className="relative z-10">
@@ -154,8 +160,8 @@ export default function ProductSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Discover our carefully curated collection of premium products, sourced directly from nature to bring you
-              the finest quality.
+              Discover our carefully curated collection of premium products,
+              sourced directly from nature to bring you the finest quality.
             </motion.p>
           </div>
 
@@ -170,7 +176,9 @@ export default function ProductSection() {
               >
                 <Alert className="max-w-2xl mx-auto border-red-200 bg-red-50">
                   <AlertCircle className="h-4 w-4 text-red-600" />
-                  <AlertDescription className="text-red-800">{error}</AlertDescription>
+                  <AlertDescription className="text-red-800">
+                    {error}
+                  </AlertDescription>
                 </Alert>
 
                 <div className="text-center mt-4">
@@ -228,7 +236,13 @@ export default function ProductSection() {
               >
                 {products.map((product) => (
                   <motion.div key={product.id} variants={itemVariants}>
-                    <ProductCard id={product.id} name={product.name} img={product.img} price={product.price} />
+                    <ProductCard
+                      id={product.id}
+                      name={product.name}
+                      img={product.img}
+                      price={product.price}
+                      pv={product?.pv}
+                    />
                   </motion.div>
                 ))}
               </motion.div>
@@ -242,7 +256,12 @@ export default function ProductSection() {
               >
                 <div className="max-w-md mx-auto">
                   <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                    <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-12 h-12 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -251,9 +270,12 @@ export default function ProductSection() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">No Products Found</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    No Products Found
+                  </h3>
                   <p className="text-gray-600 mb-6">
-                    We couldn't find any products at the moment. Please check back later.
+                    We couldn't find any products at the moment. Please check
+                    back later.
                   </p>
                   <Button onClick={handleRetry} disabled={retrying}>
                     {retrying ? (
@@ -275,5 +297,5 @@ export default function ProductSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
