@@ -2,16 +2,18 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router";
+import { useCartStore } from "@/stores/useCartStore";
 
 interface ProductCardProps {
   id: number;
   name: string;
   img: string;
   price: number;
-  pv:number;
+  pv: number;
 }
 
-function ProductCard({ id, name, img, price,pv }: ProductCardProps) {
+function ProductCard({ id, name, img, price, pv }: ProductCardProps) {
+  const { addToCart } = useCartStore();
   return (
     <motion.div
       className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
@@ -38,7 +40,8 @@ function ProductCard({ id, name, img, price,pv }: ProductCardProps) {
         <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
           <Button
             size="sm"
-            className="w-full bg-white/95 backdrop-blur-sm text-gray-800 hover:bg-white border-0 shadow-lg font-medium"
+            className="w-full bg-white/95 backdrop-blur-sm text-gray-800 hover:bg-white border-0 shadow-lg font-medium cursor-pointer"
+            onClick={() => addToCart({ id, name, img, price, pv })}
           >
             <ShoppingCart className="w-4 h-4 mr-2" />
             Quick Add
@@ -64,7 +67,7 @@ function ProductCard({ id, name, img, price,pv }: ProductCardProps) {
         <Link
           to={`product/${id}`}
           state={{
-            product: { name, img, price,id,pv },
+            product: { name, img, price, id, pv },
           }}
         >
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>

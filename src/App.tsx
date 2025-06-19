@@ -3,6 +3,9 @@ import Navbar from "@/components/navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import VerificationDialog from "./components/VerificationDailog";
+import { useEffect } from "react";
+import { useCustomerStore } from "./stores/useCustomerStore";
+import { useDialogStore } from "./stores/usedialogStrore";
 
 function Layout() {
   return (
@@ -187,5 +190,12 @@ const appRouter = createBrowserRouter([
 ]);
 
 export default function App() {
+  const {customerUserId}=useCustomerStore()
+  const {openDialog}=useDialogStore()
+  useEffect(()=>{
+    if(!customerUserId){
+      openDialog()
+    }
+  },[])
   return <RouterProvider router={appRouter} />;
 }

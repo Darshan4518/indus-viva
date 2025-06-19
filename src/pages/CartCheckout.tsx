@@ -16,7 +16,7 @@ export default function CheckoutPage() {
   const { selectedAddress } = useAddressStore();
   const { customerUserId } = useCustomerStore();
   const { openDialog } = useDialogStore();
-  const { items: products, getTotalPrice } = useCartStore();
+  const { items: products, getTotalPrice, clearCart } = useCartStore();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -41,7 +41,7 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder = () => {
     console.log(customerUserId);
-    
+
     if (!customerUserId) {
       openDialog();
     }
@@ -64,9 +64,19 @@ export default function CheckoutPage() {
                 variants={itemVariants}
                 className="bg-white rounded-xl shadow-sm p-4 sm:p-6 md:p-8 h-auto"
               >
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
-                  Your Order
-                </h2>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full mb-6 gap-4">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+                    🧾 Your Order
+                  </h2>
+
+                  <button
+                    className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-red-600 hover:text-red-700 transition-colors duration-200 cursor-pointer"
+                    onClick={clearCart}
+                  >
+                    Clear Cart
+                  </button>
+                </div>
+
                 {products?.length > 0 ? (
                   <div className="border-b pb-4 mb-4">
                     <div className="space-y-4">
@@ -138,7 +148,7 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center h-full text-center p-6 w-full">
+                  <div className="flex flex-col my-20  h-full text-center p-6 w-full">
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -151,11 +161,11 @@ export default function CheckoutPage() {
                       <p className="text-gray-500 mb-6">
                         Looks like you haven’t added anything yet.
                       </p>
-                     <Link to={"/our-products"}>
-                      <button className="px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition">
-                        Start Shopping
-                      </button>
-                     </Link>
+                      <Link to={"/our-products"}>
+                        <button className="px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition cursor-pointer">
+                          Start Shopping
+                        </button>
+                      </Link>
                     </motion.div>
                   </div>
                 )}
