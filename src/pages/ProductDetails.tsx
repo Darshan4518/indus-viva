@@ -11,8 +11,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useCartStore } from "@/stores/useCartStore";
+import { toast } from "sonner";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -29,11 +30,26 @@ const fadeIn = {
 
 export default function ProductDetailsPage() {
   const location = useLocation();
-  const { addToCart } = useCartStore();
+  const { addToCart, items } = useCartStore();
   const product = location?.state?.product;
 
   const [mainImage, setMainImage] = useState(product?.img);
-  const [quantity, setQuantity] = useState("1");
+  const [quantity, setQuantity] = useState(1);
+
+  const showAlertToast = (id: number, name: string) => {
+    const isExist = items.find((item: any) => {
+      return item.id === id;
+    });
+    if (isExist) {
+      toast.success(`${name} already exist!`, {
+        position: "top-right",
+      });
+    } else {
+      toast.success(`${name} added to cart!`, {
+        position: "top-right",
+      });
+    }
+  };
 
   return (
     <div className="bg-gradient-to-b from-green-300 to-white py-20 text-gray-900 min-h-screen">
@@ -166,9 +182,7 @@ export default function ProductDetailsPage() {
                     <button
                       className="px-2 py-1 text-gray-600 hover:text-green-600 text-lg"
                       onClick={() =>
-                        setQuantity((prev) =>
-                          Math.max(1, Number.parseInt(prev) - 1).toString()
-                        )
+                        setQuantity((prev) => Math.max(1, prev - 1))
                       }
                     >
                       -
@@ -178,17 +192,13 @@ export default function ProductDetailsPage() {
                       value={quantity}
                       onChange={(e) => {
                         const val = Number.parseInt(e.target.value);
-                        if (!isNaN(val) && val > 0) setQuantity(val.toString());
+                        if (!isNaN(val) && val > 0) setQuantity(val);
                       }}
                       className="w-10 text-center border-0 focus:ring-0 focus:outline-none text-sm sm:text-base"
                     />
                     <button
                       className="px-2 py-1 text-gray-600 hover:text-green-600 text-lg"
-                      onClick={() =>
-                        setQuantity((prev) =>
-                          (Number.parseInt(prev) + 1).toString()
-                        )
-                      }
+                      onClick={() => setQuantity((prev) => prev + 1)}
                     >
                       +
                     </button>
@@ -208,18 +218,25 @@ export default function ProductDetailsPage() {
                 <Button
                   className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg"
                   onClick={() => {
-                    addToCart(product, parseInt(quantity));
+                    addToCart(product, quantity);
+                    showAlertToast(product.id, product.name);
                   }}
                 >
                   Add to Cart
                 </Button>
 
-                <Button
-                  variant="outline"
-                  className="w-full cursor-pointer border-green-600 text-green-600 hover:bg-green-50 py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg"
-                >
-                  Buy Now
-                </Button>
+                <Link to={"/checkout"}>
+                  <Button
+                    variant="outline"
+                    className="w-full cursor-pointer border-green-600 text-green-600 hover:bg-green-50 py-5 sm:py-6 text-sm sm:text-base lg:text-lg rounded-lg"
+                    onClick={() => {
+                      addToCart(product, quantity);
+                      showAlertToast(product.id, product.name);
+                    }}
+                  >
+                    Buy Now
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex justify-between pt-2">

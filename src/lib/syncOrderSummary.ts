@@ -39,9 +39,7 @@ export const syncOrderSummary = async () => {
   };
 
   try {
-    console.log(payload);
-
-    await axios.post(
+   const response= await axios.post(
       "https://uat-api.machinesarehere.com/sales/v1/website/order-summary",
       payload,
       {
@@ -50,6 +48,10 @@ export const syncOrderSummary = async () => {
         },
       }
     );
+    
+    console.log(payload);
+    console.log(response);
+    
     console.log("✅ Order summary synced");
   } catch (error) {
     console.error("❌ Order summary failed", error);

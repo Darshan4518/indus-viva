@@ -3,7 +3,6 @@ import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import {
   ArrowLeft,
-  User,
   X,
   Loader2,
   CheckCircle,
@@ -21,6 +20,7 @@ import {
   verifyPhone,
 } from "@/services/api";
 import { useCustomerStore } from "@/stores/useCustomerStore";
+import { useDialogStore } from "@/stores/usedialogStrore";
 
 type Step = "mobile" | "otp" | "profile";
 
@@ -31,9 +31,9 @@ interface AlertState {
 }
 
 export default function VerificationDialog() {
+  const { isOpen, closeDialog } = useDialogStore();
   const { setCustomerUserId } = useCustomerStore();
 
-  const [open, setOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState<Step>("mobile");
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -83,11 +83,11 @@ export default function VerificationDialog() {
         dialogRef.current &&
         !dialogRef.current.contains(event.target as Node)
       ) {
-        setOpen(false);
+        closeDialog();
       }
     };
 
-    if (open) {
+    if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
@@ -99,11 +99,11 @@ export default function VerificationDialog() {
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        closeDialog();
       }
     };
 
-    if (open) {
+    if (isOpen) {
       document.addEventListener("keydown", handleEscapeKey);
     }
 
@@ -113,7 +113,7 @@ export default function VerificationDialog() {
   }, [open]);
 
   useEffect(() => {
-    if (open) {
+    if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -122,7 +122,7 @@ export default function VerificationDialog() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [isOpen]);
 
   const showAlert = (type: AlertState["type"], message: string) => {
     setAlert({ show: true, type, message });
@@ -141,7 +141,7 @@ export default function VerificationDialog() {
   };
 
   const handleClose = () => {
-    setOpen(false);
+    closeDialog();
     setTimeout(resetDialog, 300);
   };
 
@@ -210,11 +210,12 @@ export default function VerificationDialog() {
     setIsLoading(true);
     try {
       const res = await verifyOtp(mobileNumber, otpString);
-
       if (res.status === 200) {
         showAlert("success", "OTP verified successfully!");
-        if (res.data?.data === false)
-          setTimeout(() => setCurrentStep("profile"), 1000);
+        res.data.data
+          ? setCustomerUserId(res.data.data)
+          : setTimeout(() => setCurrentStep("profile"), 1000);
+        setTimeout(() => handleClose(), 1000);
       } else {
         setOtpAttempts((prev) => prev + 1);
         if (otpAttempts >= 3) {
@@ -290,20 +291,24 @@ export default function VerificationDialog() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
     >
       <div className="text-center">
-        <h2 className="text-xl font-semibold">Enter Mobile Number</h2>
-        <p className="text-gray-500 mt-1">We'll send you a verification code</p>
+        <h2 className="text-lg sm:text-xl font-semibold">
+          Enter Mobile Number
+        </h2>
+        <p className="text-gray-500 mt-1 text-sm sm:text-base">
+          We'll send you a verification code
+        </p>
       </div>
 
-      <div className="bg-blue-50 p-4 rounded-lg">
-        <p className="text-sm text-blue-800">
+      <div className="bg-blue-50 p-3 sm:p-4 rounded-lg">
+        <p className="text-xs sm:text-sm text-blue-800">
           Please ensure the mobile number is correct.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         <div>
           <label
             htmlFor="mobile-number"
@@ -316,7 +321,7 @@ export default function VerificationDialog() {
             placeholder="Enter your mobile number"
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, ""))}
-            className="w-full"
+            className="w-full h-11 sm:h-12 text-base"
             maxLength={10}
             disabled={isLoading}
           />
@@ -325,7 +330,7 @@ export default function VerificationDialog() {
         <Button
           onClick={handleVerifyPhoneNumber}
           disabled={isLoading || !mobileNumber.trim()}
-          className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+          className="w-full bg-teal-600 hover:bg-teal-700 text-white h-11 sm:h-12 text-base"
         >
           {isLoading ? (
             <>
@@ -345,16 +350,16 @@ export default function VerificationDialog() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
     >
       <div className="text-center">
-        <h2 className="text-xl font-semibold">Verify OTP</h2>
-        <p className="text-gray-500 mt-1">
+        <h2 className="text-lg sm:text-xl font-semibold">Verify OTP</h2>
+        <p className="text-gray-500 mt-1 text-sm sm:text-base">
           Enter the code sent to {mobileNumber}
         </p>
       </div>
 
-      <div className="flex justify-center space-x-3">
+      <div className="flex justify-center space-x-2 sm:space-x-3">
         {otp.map((digit, index) => (
           <Input
             key={index}
@@ -366,7 +371,7 @@ export default function VerificationDialog() {
             value={digit}
             onChange={(e) => handleOtpChange(index, e.target.value)}
             onKeyDown={(e) => handleOtpKeyDown(index, e)}
-            className="w-12 h-12 text-center text-xl font-semibold"
+            className="w-10 h-10 sm:w-12 sm:h-12 text-center text-lg sm:text-xl font-semibold"
             disabled={isLoading}
           />
         ))}
@@ -376,7 +381,7 @@ export default function VerificationDialog() {
         <Button
           onClick={handleVerifyOtp}
           disabled={isLoading || otp.join("").length !== 4}
-          className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+          className="w-full bg-teal-600 hover:bg-teal-700 text-white h-11 sm:h-12 text-base"
         >
           {isLoading ? (
             <>
@@ -394,7 +399,7 @@ export default function VerificationDialog() {
               variant="ghost"
               onClick={handleResendOtp}
               disabled={isLoading}
-              className="text-teal-600 hover:text-teal-700"
+              className="text-teal-600 hover:text-teal-700 h-10 sm:h-11"
             >
               {isLoading ? (
                 <>
@@ -418,7 +423,7 @@ export default function VerificationDialog() {
         <Button
           variant="ghost"
           onClick={() => setCurrentStep("mobile")}
-          className="w-full"
+          className="w-full h-10 sm:h-11"
           disabled={isLoading}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -433,14 +438,18 @@ export default function VerificationDialog() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
     >
       <div className="text-center">
-        <h2 className="text-xl font-semibold">Complete Your Profile</h2>
-        <p className="text-gray-500 mt-1">Just a few more details</p>
+        <h2 className="text-lg sm:text-xl font-semibold">
+          Complete Your Profile
+        </h2>
+        <p className="text-gray-500 mt-1 text-sm sm:text-base">
+          Just a few more details
+        </p>
       </div>
 
-      <form onSubmit={handleCompleteProfile} className="space-y-4">
+      <form onSubmit={handleCompleteProfile} className="space-y-3 sm:space-y-4">
         <div>
           <label
             htmlFor="full-name"
@@ -453,7 +462,7 @@ export default function VerificationDialog() {
             placeholder="Enter your full name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="w-full"
+            className="w-full h-11 sm:h-12 text-base"
             disabled={isLoading}
             required
           />
@@ -472,17 +481,17 @@ export default function VerificationDialog() {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full"
+            className="w-full h-11 sm:h-12 text-base"
             disabled={isLoading}
             required
           />
         </div>
 
-        <div className="space-y-3 pt-4">
+        <div className="space-y-3 pt-2 sm:pt-4">
           <Button
             type="submit"
             disabled={isLoading || !fullName.trim() || !email.trim()}
-            className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white h-11 sm:h-12 text-base"
           >
             {isLoading ? (
               <>
@@ -498,7 +507,7 @@ export default function VerificationDialog() {
             type="button"
             variant="ghost"
             onClick={() => setCurrentStep("otp")}
-            className="w-full"
+            className="w-full h-10 sm:h-11"
             disabled={isLoading}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -510,125 +519,123 @@ export default function VerificationDialog() {
   );
 
   return (
-    <div className="relative ">
-      <User
-        className="h-6 w-6 cursor-pointer transition-colors hover:text-gray-300"
-        onClick={() => setOpen(true)}
-        color="white"
-      />
-
+    <div className="relative">
       <AnimatePresence>
-        {open && (
+        {isOpen && (
           <motion.div
-            className="fixed inset-0 z-[999] bg-black/50 overflow-y-auto min-h-screen"
+            className="fixed inset-0 z-[999] bg-black/50 overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <motion.div
-              className="flex min-h-screen justify-center px-4 py-10 sm:items-center"
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div
-                ref={dialogRef}
-                className="w-full max-w-md rounded-lg bg-white shadow-xl relative"
-                role="dialog"
-                aria-modal="true"
+            <div className="flex min-h-screen justify-center items-start sm:items-center p-2 sm:p-4">
+              <motion.div
+                className="w-full max-w-sm sm:max-w-md mt-4 sm:mt-0"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b">
-                  <div className="flex items-center space-x-2">
-                    <img
-                      src="https://magicads.ae/indus-viva/assets/img/new/logo-black.png"
-                      alt="IndusViva Logo"
-                      className="h-8 object-contain"
-                    />
-                  </div>
-                  <button
-                    onClick={handleClose}
-                    className="rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
-                    disabled={isLoading}
-                  >
-                    <X className="h-5 w-5" />
-                    <span className="sr-only">Close</span>
-                  </button>
-                </div>
-
-                {/* Alert */}
-                <AnimatePresence>
-                  {alert.show && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mx-6 mt-4"
+                <div
+                  ref={dialogRef}
+                  className="rounded-lg bg-white shadow-xl relative max-h-[calc(100vh-2rem)] overflow-y-auto"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-4 sm:p-6 border-b">
+                    <div className="flex items-center space-x-2">
+                      <img
+                        src="https://magicads.ae/indus-viva/assets/img/new/logo-black.png"
+                        alt="IndusViva Logo"
+                        className="h-6 sm:h-8 object-contain"
+                      />
+                    </div>
+                    <button
+                      onClick={handleClose}
+                      className="rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 p-1"
+                      disabled={isLoading}
                     >
-                      <Alert
-                        className={`${
-                          alert.type === "success"
-                            ? "border-green-200 bg-green-50"
-                            : alert.type === "error"
-                            ? "border-red-200 bg-red-50"
-                            : "border-blue-200 bg-blue-50"
-                        }`}
+                      <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                      <span className="sr-only">Close</span>
+                    </button>
+                  </div>
+
+                  {/* Alert */}
+                  <AnimatePresence>
+                    {alert.show && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="mx-4 sm:mx-6 mt-3 sm:mt-4"
                       >
-                        {alert.type === "success" ? (
-                          <CheckCircle className="h-4 w-4 text-green-600" />
-                        ) : (
-                          <AlertCircle
-                            className={`h-4 w-4 ${
-                              alert.type === "error"
-                                ? "text-red-600"
-                                : "text-blue-600"
-                            }`}
-                          />
-                        )}
-                        <AlertDescription
+                        <Alert
                           className={`${
                             alert.type === "success"
-                              ? "text-green-800"
+                              ? "border-green-200 bg-green-50"
                               : alert.type === "error"
-                              ? "text-red-800"
-                              : "text-blue-800"
+                              ? "border-red-200 bg-red-50"
+                              : "border-blue-200 bg-blue-50"
                           }`}
                         >
-                          {alert.message}
-                        </AlertDescription>
-                      </Alert>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <div className="p-6">
-                  <AnimatePresence mode="wait">
-                    {currentStep === "mobile" && renderMobileStep()}
-                    {currentStep === "otp" && renderOtpStep()}
-                    {currentStep === "profile" && renderProfileStep()}
+                          {alert.type === "success" ? (
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                          ) : (
+                            <AlertCircle
+                              className={`h-4 w-4 ${
+                                alert.type === "error"
+                                  ? "text-red-600"
+                                  : "text-blue-600"
+                              }`}
+                            />
+                          )}
+                          <AlertDescription
+                            className={`text-xs sm:text-sm ${
+                              alert.type === "success"
+                                ? "text-green-800"
+                                : alert.type === "error"
+                                ? "text-red-800"
+                                : "text-blue-800"
+                            }`}
+                          >
+                            {alert.message}
+                          </AlertDescription>
+                        </Alert>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
-                </div>
 
-                <div className="px-6 pb-6">
-                  <div className="flex justify-center space-x-2">
-                    {["mobile", "otp", "profile"].map((step, index) => (
-                      <div
-                        key={step}
-                        className={`h-2 w-8 rounded-full transition-colors ${
-                          currentStep === step
-                            ? "bg-teal-600"
-                            : index <
-                              ["mobile", "otp", "profile"].indexOf(currentStep)
-                            ? "bg-teal-300"
-                            : "bg-gray-200"
-                        }`}
-                      />
-                    ))}
+                  <div className="p-4 sm:p-6">
+                    <AnimatePresence mode="wait">
+                      {currentStep === "mobile" && renderMobileStep()}
+                      {currentStep === "otp" && renderOtpStep()}
+                      {currentStep === "profile" && renderProfileStep()}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                    <div className="flex justify-center space-x-1 sm:space-x-2">
+                      {["mobile", "otp", "profile"].map((step, index) => (
+                        <div
+                          key={step}
+                          className={`h-1.5 sm:h-2 w-6 sm:w-8 rounded-full transition-colors ${
+                            currentStep === step
+                              ? "bg-teal-600"
+                              : index <
+                                ["mobile", "otp", "profile"].indexOf(
+                                  currentStep
+                                )
+                              ? "bg-teal-300"
+                              : "bg-gray-200"
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

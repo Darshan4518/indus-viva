@@ -3,7 +3,6 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { RefreshCw, AlertCircle } from "lucide-react";
 
-import NavigationHeroSection from "@/components/NavigationHeroSection";
 import ProductCard from "@/components/products/product-card";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -13,7 +12,7 @@ interface ApiProduct {
   product_name: string;
   thumbnail_url: string;
   selling_price: number;
-  pv:number;
+  pv: number;
 }
 
 interface Product {
@@ -127,7 +126,7 @@ export default function ProductSection() {
 
   return (
     <section className="relative z-10">
-      <NavigationHeroSection title="Our Products" path="Products" />
+      <div className="relative h-[50vh]  bg-[url('./productbanner.png')] bg-no-repeat bg-cover bg-center"></div>
 
       <div className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

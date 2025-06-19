@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -13,10 +13,10 @@ import logo from "@/assets/img/new/logo.svg";
 import logoblack from "@/assets/img/new/logo-black.png";
 
 import CartSheet from "./cart/CartSheet";
-import VerificationDialog from "./VerificationDailog";
-
+import { useDialogStore } from "@/stores/usedialogStrore";
 
 export default function Navbar() {
+  const { openDialog } = useDialogStore();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -60,7 +60,11 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <img src={logo} alt="logo" className="md:w-40 md:h-40 w-30 h-30" />
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="md:w-40 md:h-40 w-30 h-30"
+                />
               </Link>
             </div>
 
@@ -83,7 +87,11 @@ export default function Navbar() {
 
             {/* Icons */}
             <div className="flex items-center space-x-6">
-              <VerificationDialog />
+              <User
+                className="h-5 w-5 sm:h-6 sm:w-6 cursor-pointer transition-colors hover:text-gray-300"
+                onClick={openDialog}
+                color="white"
+              />
               <CartSheet />
               <Sheet>
                 <SheetTrigger

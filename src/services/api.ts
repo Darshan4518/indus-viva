@@ -35,4 +35,5 @@ export const fetchCustomerOrders = (customer_id: number, page_no = 1) =>
     page_no,
   });
 
-
+export const fetchLocations = () =>
+  axios.get(`${BASE_URL}/sales/v1/store/location/list/688527`);

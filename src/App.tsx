@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Navbar from "@/components/navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import VerificationDialog from "./components/VerificationDailog";
 
 function Layout() {
   return (
@@ -10,6 +11,7 @@ function Layout() {
       <Navbar />
       <Outlet />
       <Footer />
+      <VerificationDialog />
     </main>
   );
 }
