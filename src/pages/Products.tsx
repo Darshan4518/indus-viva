@@ -125,12 +125,12 @@ export default function ProductSection() {
   };
 
   return (
-    <section className="relative z-10">
-      <div className="relative min-h-[50vh]  ">
+    <section className="">
+      <div className=" min-h-[50vh] h-[50vh]">
         <img
           src="./productbanner.png"
           alt="productbanner"
-          className=" h-full w-full  bg-no-repeat bg-cover bg-center"
+          className=" h-full w-full bg-no-repeat object-cover bg-center"
         />
       </div>
 
