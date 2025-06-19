@@ -126,7 +126,13 @@ export default function ProductSection() {
 
   return (
     <section className="relative z-10">
-      <div className="relative h-[50vh]  bg-[url('./productbanner.png')] bg-no-repeat bg-cover bg-center"></div>
+      <div className="relative min-h-[50vh]  ">
+        <img
+          src="./productbanner.png"
+          alt="productbanner"
+          className=" h-full w-full  bg-no-repeat bg-cover bg-center"
+        />
+      </div>
 
       <div className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
